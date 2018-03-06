@@ -15,6 +15,7 @@ public class MainMenu extends AppCompatActivity {
 
         configureMultiplayerButton();
         configureSoloButton();
+        configureSettingsButton();
 
     }
 
@@ -35,6 +36,16 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainMenu.this, MultiplayerScreen.class));
+            }
+        });
+    }
+
+    public void configureSettingsButton(){
+        Button settings = (Button) findViewById(R.id.Settings);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainMenu.this, SettingsScreen.class));
             }
         });
     }
