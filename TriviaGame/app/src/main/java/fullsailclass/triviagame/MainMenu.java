@@ -13,21 +13,30 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
+        configureMultiplayerButton();
         configureSoloButton();
+
     }
 
-    public void configureSoloButton(){
+    public void configureSoloButton() {
         Button solo = (Button) findViewById(R.id.Solo);
         solo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainMenu.this,SoloScreen.class));
+                startActivity(new Intent(MainMenu.this, SoloScreen.class));
             }
 
         });
-
-
-
-
     }
+
+    public void configureMultiplayerButton(){
+        Button multi = (Button) findViewById(R.id.Multplayer);
+        multi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainMenu.this, MultiplayerScreen.class));
+            }
+        });
+    }
+
 }
