@@ -1,5 +1,6 @@
 package fullsailclass.triviagame;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ public class SettingsScreen extends AppCompatActivity {
         setContentView(R.layout.activity_settings_screen);
 
         configureSettingBackButton();
+        configureCreditsButton();
     }
 
     public void configureSettingBackButton() {
@@ -25,6 +27,16 @@ public class SettingsScreen extends AppCompatActivity {
 
             }
 
+        });
+    }
+
+    public void configureCreditsButton(){
+        Button cred = (Button) findViewById(R.id.CreditsBTN);
+        cred.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SettingsScreen.this, CreditsScreen.class));
+            }
         });
     }
 }

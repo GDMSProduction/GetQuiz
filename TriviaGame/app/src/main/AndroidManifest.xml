@@ -19,7 +19,8 @@
         <activity android:name=".SoloScreen" />
         <activity android:name=".MultiplayerScreen" />
         <activity android:name=".SettingsScreen" />
-        <activity android:name=".QuestionsScreen"></activity>
+        <activity android:name=".QuestionsScreen" />
+        <activity android:name=".CreditsScreen"></activity>
     </application>
 
 </manifest>
