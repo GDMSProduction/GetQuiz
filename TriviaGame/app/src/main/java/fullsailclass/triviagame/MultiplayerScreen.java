@@ -20,6 +20,7 @@ public class MultiplayerScreen extends AppCompatActivity {
         setContentView(R.layout.activity_multiplayer_screen);
 
         configureBackButton();
+        setTitle("Multiplayer Menu");
     }
 
     public void configureBackButton() {

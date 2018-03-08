@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toolbar;
 
 public class SoloScreen extends AppCompatActivity {
 
@@ -20,6 +21,8 @@ public class SoloScreen extends AppCompatActivity {
         configureMusicButton();
         configureScienceButton();
         configureSportsButton();
+
+        setTitle("Solo Menu");
     }
 
     public void configureSGBackButton() {

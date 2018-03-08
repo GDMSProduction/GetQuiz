@@ -13,6 +13,7 @@ public class QuestionsScreen extends AppCompatActivity {
         setContentView(R.layout.activity_questions_screen);
 
         configureQuestionsBackButton();
+        setTitle("Questions");
     }
 
     public void configureQuestionsBackButton() {

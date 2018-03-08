@@ -27,7 +27,7 @@ public class SettingsScreen extends AppCompatActivity {
         configureSoundEffectSeekbar();
 
 
-
+        setTitle("Settings");
     }
 
     private void configureBackMusicSeekbar() {

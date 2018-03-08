@@ -13,6 +13,7 @@ public class CreditsScreen extends AppCompatActivity {
         setContentView(R.layout.activity_credits_screen);
 
         configureCreditBackButton();
+        setTitle("Credits");
     }
 
     public void configureCreditBackButton() {
