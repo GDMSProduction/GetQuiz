@@ -16,7 +16,7 @@ public class MainMenu extends AppCompatActivity {
         configureMultiplayerButton();
         configureSoloButton();
         configureSettingsButton();
-
+        setTitle("Main Menu");
     }
 
     public void configureSoloButton() {

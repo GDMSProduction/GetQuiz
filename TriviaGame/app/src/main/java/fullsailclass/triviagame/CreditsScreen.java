@@ -5,20 +5,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class QuestionsScreen extends AppCompatActivity {
+public class CreditsScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_questions_screen);
+        setContentView(R.layout.activity_credits_screen);
 
-        configureQuestionsBackButton();
-        setTitle("Questions");
+        configureCreditBackButton();
+        setTitle("Credits");
     }
 
-    public void configureQuestionsBackButton() {
-        Button back = (Button) findViewById(R.id.QuestionsBackBTN);
-        back.setOnClickListener(new View.OnClickListener() {
+    public void configureCreditBackButton() {
+        Button creditsBack = (Button) findViewById(R.id.CreditsBackBTN);
+        creditsBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -28,4 +28,6 @@ public class QuestionsScreen extends AppCompatActivity {
 
         });
     }
+
+
 }

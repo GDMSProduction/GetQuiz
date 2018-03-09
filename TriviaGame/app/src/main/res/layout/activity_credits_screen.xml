@@ -4,69 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fullsailclass.triviagame.QuestionsScreen">
+    tools:context="fullsailclass.triviagame.CreditsScreen">
 
     <TextView
-        android:id="@+id/QuestionText"
+        android:id="@+id/ProgrammedByText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Questions"
+        android:text="Programmed by:"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.172" />
+        app:layout_constraintVertical_bias="0.469" />
 
-    <Button
-        android:id="@+id/Answer1BTN"
+    <TextView
+        android:id="@+id/ProgramNamesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Answer 1"
+        android:text="Jose Otero Perez\nand\nJesus Antonio Fragoso Jr."
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.556"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.39" />
+        app:layout_constraintVertical_bias="0.572" />
 
-    <Button
-        android:id="@+id/Answer2BTN"
+    <TextView
+        android:id="@+id/ProducedByText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Answer 2"
+        android:text="Produced by:"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.539"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.546" />
+        app:layout_constraintVertical_bias="0.25" />
 
-    <Button
-        android:id="@+id/Answer3BTN"
+    <TextView
+        android:id="@+id/ProducedNamesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Answer 3"
+        android:text="Fredy Sanguinetti"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.691" />
+        app:layout_constraintVertical_bias="0.31" />
 
     <Button
-        android:id="@+id/Answer4BTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Answer 4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.842" />
-
-    <Button
-        android:id="@+id/QuestionsBackBTN"
+        android:id="@+id/CreditsBackBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
@@ -75,6 +66,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.008" />
-
+        app:layout_constraintVertical_bias="0.015" />
 </android.support.constraint.ConstraintLayout>
