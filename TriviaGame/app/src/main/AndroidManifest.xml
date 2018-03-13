@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fullsailclass.triviagame">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,8 +21,13 @@
         <activity android:name=".SoloScreen" />
         <activity android:name=".MultiplayerScreen" />
         <activity android:name=".SettingsScreen" />
-        <activity android:name=".QuestionsScreen">
-        </activity>
+        <activity android:name=".QuestionsScreen" />
+        <activity android:name=".HistoryScreen" />
+        <activity android:name=".ScienceScreen" />
+        <activity android:name=".MusicScreen" />
+        <activity android:name=".GamesScreen" />
+        <activity android:name=".EntertainmentScreen" />
+        <activity android:name=".SportsScreen"></activity>
     </application>
 
 </manifest>
