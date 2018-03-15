@@ -34,6 +34,7 @@ public class QuestionsScreen extends AppCompatActivity {
     MainMenu menu = new MainMenu();
     Random r = new Random();
     MediaPlayer play;
+    CountDownTimer waitTimer = null;
     int Score = 0;
     int Life = 3;
     String category;
@@ -98,6 +99,7 @@ public class QuestionsScreen extends AppCompatActivity {
 
                 }
 
+                waitTimer.cancel();
 
             }
 
@@ -134,6 +136,8 @@ public class QuestionsScreen extends AppCompatActivity {
                         }
                     }, 1000);
                 }
+                waitTimer.cancel();
+
 
             }
 
@@ -171,6 +175,8 @@ public class QuestionsScreen extends AppCompatActivity {
                         }
                     }, 1000);
                 }
+                waitTimer.cancel();
+
             }
 
         });
@@ -208,6 +214,8 @@ public class QuestionsScreen extends AppCompatActivity {
                     }, 1000);
 
                 }
+                waitTimer.cancel();
+
 
             }
 
@@ -340,8 +348,9 @@ public class QuestionsScreen extends AppCompatActivity {
     }
     //timer
     public void configureTimer(){
-        new CountDownTimer(16000, 1000) {
+       waitTimer = new CountDownTimer(16000, 1000) {
             TextView timer = (TextView) findViewById(R.id.TimerText);
+
             public void onTick(long millisUntilFinished) {
                 timer.setTextColor(Color.BLUE);
 
@@ -349,6 +358,7 @@ public class QuestionsScreen extends AppCompatActivity {
 
                 if (millisUntilFinished<6000){
                     timer.setTextColor(Color.RED);
+
                 }
 
             }
