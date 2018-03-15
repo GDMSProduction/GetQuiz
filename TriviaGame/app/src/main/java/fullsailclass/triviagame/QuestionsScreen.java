@@ -1,5 +1,7 @@
 package fullsailclass.triviagame;
 
+
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,7 +10,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
+import junit.framework.Test;
+
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
@@ -23,15 +28,21 @@ public class QuestionsScreen extends AppCompatActivity {
     List<Integer> PlayedQuestions = new ArrayList<Integer>();
     MainMenu menu = new MainMenu();
     Random r = new Random();
+    MediaPlayer play;
     int Score = 0;
     int Life = 3;
+    String category;
     String question, answer1, answer2,answer3, answer4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions_screen);
         Life = 3;
-        OpenFile("game_questions.txt");
+       category = getIntent().getExtras().getString("Category");
+
+        OpenFile(category);
+        //OpenFile("game_questions.txt");
+
         setTitle("Questions");
         NextQuestion(0);
 
@@ -55,12 +66,13 @@ public class QuestionsScreen extends AppCompatActivity {
         Answer1.setText(answer1);
         Answer1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
+            public void onClick(final View view) {
                 if(list.get(_rand).getIsAnswer1() == false) {
                     Answer1.setTextColor(getResources().getColor(R.color.Red));
                     view.postDelayed(new Runnable() {
                         public void run() {
+                            play = MediaPlayer.create(view.getContext(), R.raw.wrong);
+                            play.start();
                             NextQuestion(2);
                             Answer1.setTextColor(getResources().getColor(R.color.Black));
                         }
@@ -71,6 +83,8 @@ public class QuestionsScreen extends AppCompatActivity {
                     Answer1.setTextColor(getResources().getColor(R.color.Green));
                     view.postDelayed(new Runnable() {
                         public void run() {
+                            play = MediaPlayer.create(view.getContext(), R.raw.good);
+                            play.start();
                             NextQuestion(1);
                             Answer1.setTextColor(getResources().getColor(R.color.Black));
                         }
@@ -89,12 +103,14 @@ public class QuestionsScreen extends AppCompatActivity {
         Answer2.setText(answer2);
         Answer2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
 
                 if(list.get(_rand).getIsAnswer2() == false) {
                     Answer2.setTextColor(getResources().getColor(R.color.Red));
                     view.postDelayed(new Runnable() {
                         public void run() {
+                            play = MediaPlayer.create(view.getContext(), R.raw.wrong);
+                            play.start();
                             NextQuestion(2);
                             Answer2.setTextColor(getResources().getColor(R.color.Black));
                         }
@@ -105,6 +121,8 @@ public class QuestionsScreen extends AppCompatActivity {
                     Answer2.setTextColor(getResources().getColor(R.color.Green));
                     view.postDelayed(new Runnable() {
                         public void run() {
+                            play = MediaPlayer.create(view.getContext(), R.raw.good);
+                            play.start();
                             NextQuestion(1);
                             Answer2.setTextColor(getResources().getColor(R.color.Black));
                         }
@@ -121,12 +139,14 @@ public class QuestionsScreen extends AppCompatActivity {
         Answer3.setText(answer3);
         Answer3.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
 
                 if(list.get(_rand).getIsAnswer3() == false) {
                     Answer3.setTextColor(getResources().getColor(R.color.Red));
                     view.postDelayed(new Runnable() {
                         public void run() {
+                            play = MediaPlayer.create(view.getContext(), R.raw.wrong);
+                            play.start();
                             NextQuestion(2);
                             Answer3.setTextColor(getResources().getColor(R.color.Black));
                         }
@@ -138,6 +158,8 @@ public class QuestionsScreen extends AppCompatActivity {
                     Answer3.setTextColor(getResources().getColor(R.color.Green));
                     view.postDelayed(new Runnable() {
                         public void run() {
+                            play = MediaPlayer.create(view.getContext(), R.raw.good);
+                            play.start();
                             NextQuestion(1);
                             Answer3.setTextColor(getResources().getColor(R.color.Black));
                         }
@@ -153,12 +175,14 @@ public class QuestionsScreen extends AppCompatActivity {
         Answer4.setText(answer4);
         Answer4.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
 
                 if(list.get(_rand).getIsAnswer4() == false) {
                     Answer4.setTextColor(getResources().getColor(R.color.Red));
                     view.postDelayed(new Runnable() {
                         public void run() {
+                            play = MediaPlayer.create(view.getContext(), R.raw.wrong);
+                            play.start();
                             NextQuestion(2);
                             Answer4.setTextColor(getResources().getColor(R.color.Black));
                         }
@@ -170,6 +194,8 @@ public class QuestionsScreen extends AppCompatActivity {
                     Answer4.setTextColor(getResources().getColor(R.color.Green));
                     view.postDelayed(new Runnable() {
                         public void run() {
+                            play = MediaPlayer.create(view.getContext(), R.raw.good);
+                            play.start();
                             NextQuestion(1);
                             Answer4.setTextColor(getResources().getColor(R.color.Black));
                         }
