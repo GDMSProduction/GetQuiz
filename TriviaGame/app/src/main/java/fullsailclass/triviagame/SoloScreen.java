@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SoloScreen extends AppCompatActivity {
-    MainMenu menu = new MainMenu();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +48,10 @@ public class SoloScreen extends AppCompatActivity {
         entertainment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SoloScreen.this, EntertainmentScreen.class));
+                Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
+                intent.putExtra("Category", "entertainment_questions.txt");
+                startActivity(intent);
+                //startActivity(new Intent(SoloScreen.this, EntertainmentScreen.class));
             }
 
         });
@@ -60,7 +62,12 @@ public class SoloScreen extends AppCompatActivity {
         games.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SoloScreen.this, QuestionsScreen.class));
+                Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
+                intent.putExtra("Category", "game_questions.txt");
+                startActivity(intent);
+
+                //startActivity(new Intent(SoloScreen.this, QuestionsScreen.class));
+
             }
 
         });
@@ -71,7 +78,10 @@ public class SoloScreen extends AppCompatActivity {
         history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SoloScreen.this, HistoryScreen.class));
+                Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
+                intent.putExtra("Category", "history_questions.txt");
+                startActivity(intent);
+                //startActivity(new Intent(SoloScreen.this, HistoryScreen.class));
             }
 
         });
@@ -82,7 +92,10 @@ public class SoloScreen extends AppCompatActivity {
         music.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SoloScreen.this, MusicScreen.class));
+                Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
+                intent.putExtra("Category", "music_questions.txt");
+                startActivity(intent);
+                //startActivity(new Intent(SoloScreen.this, MusicScreen.class));
             }
 
         });
@@ -93,7 +106,12 @@ public class SoloScreen extends AppCompatActivity {
         science.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SoloScreen.this, ScienceScreen.class));
+                Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
+                intent.putExtra("Category", "science_questions.txt");
+                startActivity(intent);
+                //startActivity(new Intent(SoloScreen.this, ScienceScreen.class));
+
+
             }
 
         });
@@ -104,7 +122,10 @@ public class SoloScreen extends AppCompatActivity {
         sports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SoloScreen.this, SportsScreen.class));
+                Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
+                intent.putExtra("Category", "sports_questions.txt");
+                startActivity(intent);
+               // startActivity(new Intent(SoloScreen.this, SportsScreen.class));
             }
 
         });
