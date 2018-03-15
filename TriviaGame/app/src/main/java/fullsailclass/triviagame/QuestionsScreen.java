@@ -335,7 +335,9 @@ public class QuestionsScreen extends AppCompatActivity {
         questiontxt.setText(question);
         score.setText("Score: " + Score);
         life.setText("Life: " + Life);
+
         configureTimer();
+
 
     }
     //timer
@@ -353,17 +355,21 @@ public class QuestionsScreen extends AppCompatActivity {
 
             }
 
+
             public void onFinish() {
                 timer.setText("0");
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
+
                         NextQuestion(2);
 
                     }
                 }, 3000);
 
             }
+
         }.start();
+
     }
 
 
