@@ -310,6 +310,7 @@ public class QuestionsScreen extends AppCompatActivity {
         configureTimer();
 
     }
+    //timer
     public void configureTimer(){
         new CountDownTimer(16000, 1000) {
             TextView timer = (TextView) findViewById(R.id.TimerText);
