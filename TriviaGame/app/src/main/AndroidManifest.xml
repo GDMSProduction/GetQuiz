@@ -27,6 +27,7 @@
         <activity android:name=".MusicScreen" />
         <activity android:name=".GamesScreen" />
         <activity android:name=".EntertainmentScreen" />
+        <activity android:name=".CreditsScreen" />
         <activity android:name=".SportsScreen"></activity>
     </application>
 
