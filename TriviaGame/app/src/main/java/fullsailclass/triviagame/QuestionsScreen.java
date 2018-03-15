@@ -1,13 +1,12 @@
 package fullsailclass.triviagame;
 
-<<<<<<< HEAD
+
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.os.Handler;
-=======
 
 import android.media.MediaPlayer;
->>>>>>> 8fd9fbb3256e373a13632e16cfbca6d160c7f2c2
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
