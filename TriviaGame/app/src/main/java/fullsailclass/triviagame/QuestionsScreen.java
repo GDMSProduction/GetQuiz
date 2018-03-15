@@ -1,5 +1,8 @@
 package fullsailclass.triviagame;
 
+import android.graphics.Color;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -34,6 +37,7 @@ public class QuestionsScreen extends AppCompatActivity {
         OpenFile("game_questions.txt");
         setTitle("Questions");
         NextQuestion(0);
+
 
     }
 
@@ -303,8 +307,34 @@ public class QuestionsScreen extends AppCompatActivity {
         questiontxt.setText(question);
         score.setText("Score: " + Score);
         life.setText("Life: " + Life);
+        configureTimer();
 
+    }
+    public void configureTimer(){
+        new CountDownTimer(16000, 1000) {
+            TextView timer = (TextView) findViewById(R.id.TimerText);
+            public void onTick(long millisUntilFinished) {
+                timer.setTextColor(Color.BLUE);
 
+                timer.setText(""+millisUntilFinished / 1000);
+
+                if (millisUntilFinished<6000){
+                    timer.setTextColor(Color.RED);
+                }
+
+            }
+
+            public void onFinish() {
+                timer.setText("0");
+                new Handler().postDelayed(new Runnable() {
+                    public void run() {
+                        NextQuestion(2);
+
+                    }
+                }, 3000);
+
+            }
+        }.start();
     }
 
 
