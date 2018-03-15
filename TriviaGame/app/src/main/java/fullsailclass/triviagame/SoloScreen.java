@@ -48,7 +48,10 @@ public class SoloScreen extends AppCompatActivity {
         entertainment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SoloScreen.this, EntertainmentScreen.class));
+                Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
+                intent.putExtra("Category", "entertainment_questions.txt");
+                startActivity(intent);
+                //startActivity(new Intent(SoloScreen.this, EntertainmentScreen.class));
             }
 
         });
