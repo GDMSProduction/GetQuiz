@@ -33,24 +33,30 @@ public class QuestionsScreen extends AppCompatActivity {
     List<Integer> PlayedQuestions = new ArrayList<Integer>();
     MainMenu menu = new MainMenu();
     Random r = new Random();
-    MediaPlayer play;
+    MediaPlayer play, timeover, gameover;
     CountDownTimer waitTimer = null;
     int Score = 0;
     int Life = 3;
+    int globalrand = 0;
+    long time = 0;
     String category;
-    String question, answer1, answer2,answer3, answer4;
+    String question, answer1, answer2, answer3, answer4;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions_screen);
         Life = 3;
-       category = getIntent().getExtras().getString("Category");
+        category = getIntent().getExtras().getString("Category");
 
         OpenFile(category);
-        //OpenFile("game_questions.txt");
 
         setTitle("Questions");
         NextQuestion(0);
+        timeover = MediaPlayer.create(this.getBaseContext(), R.raw.timersdonesound);
+        play = MediaPlayer.create(this.getBaseContext(), R.raw.wrong);
+        gameover = MediaPlayer.create(this.getBaseContext(),R.raw.gameover);
 
 
     }
@@ -60,40 +66,38 @@ public class QuestionsScreen extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                waitTimer.cancel();
                 finish();
-
             }
 
         });
     }
 
     public void configureAnswer1btn(final int _rand) {
-       final Button Answer1 = (Button) findViewById(R.id.Answer1BTN);
+        final Button Answer1 = (Button) findViewById(R.id.Answer1BTN);
         Answer1.setText(answer1);
         Answer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                if(list.get(_rand).getIsAnswer1() == false) {
-                    Answer1.setTextColor(getResources().getColor(R.color.Red));
+                if (list.get(_rand).getIsAnswer1() == false) {
+                    Answer1.setBackgroundColor(getResources().getColor(R.color.Red));
+                    ShowAnswer();
                     view.postDelayed(new Runnable() {
                         public void run() {
                             play = MediaPlayer.create(view.getContext(), R.raw.wrong);
                             play.start();
                             NextQuestion(2);
-                            Answer1.setTextColor(getResources().getColor(R.color.Black));
+                            ResetBTNColor();
                         }
                     }, 1000);
-                }
-                else
-                {
-                    Answer1.setTextColor(getResources().getColor(R.color.Green));
+                } else {
+                    Answer1.setBackgroundColor(getResources().getColor(R.color.Green));
                     view.postDelayed(new Runnable() {
                         public void run() {
                             play = MediaPlayer.create(view.getContext(), R.raw.good);
                             play.start();
                             NextQuestion(1);
-                            Answer1.setTextColor(getResources().getColor(R.color.Black));
+                            ResetBTNColor();
                         }
                     }, 1000);
 
@@ -112,27 +116,26 @@ public class QuestionsScreen extends AppCompatActivity {
         Answer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-
-                if(list.get(_rand).getIsAnswer2() == false) {
-                    Answer2.setTextColor(getResources().getColor(R.color.Red));
+                if (list.get(_rand).getIsAnswer2() == false) {
+                    Answer2.setBackgroundColor(getResources().getColor(R.color.Red));
+                    ShowAnswer();
                     view.postDelayed(new Runnable() {
                         public void run() {
                             play = MediaPlayer.create(view.getContext(), R.raw.wrong);
                             play.start();
                             NextQuestion(2);
-                            Answer2.setTextColor(getResources().getColor(R.color.Black));
+                            ResetBTNColor();
                         }
                     }, 1000);
-                }
-                else
-                {
-                    Answer2.setTextColor(getResources().getColor(R.color.Green));
+                } else {
+                    Answer2.setBackgroundColor(getResources().getColor(R.color.Green));
                     view.postDelayed(new Runnable() {
                         public void run() {
                             play = MediaPlayer.create(view.getContext(), R.raw.good);
                             play.start();
                             NextQuestion(1);
-                            Answer2.setTextColor(getResources().getColor(R.color.Black));
+                            ResetBTNColor();
+
                         }
                     }, 1000);
                 }
@@ -145,33 +148,30 @@ public class QuestionsScreen extends AppCompatActivity {
     }
 
     public void configureAnswer3btn(final int _rand) {
-       final Button Answer3 = (Button) findViewById(R.id.Answer3BTN);
+        final Button Answer3 = (Button) findViewById(R.id.Answer3BTN);
         Answer3.setText(answer3);
         Answer3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-
-                if(list.get(_rand).getIsAnswer3() == false) {
-                    Answer3.setTextColor(getResources().getColor(R.color.Red));
+                if (list.get(_rand).getIsAnswer3() == false) {
+                    Answer3.setBackgroundColor(getResources().getColor(R.color.Red));
+                    ShowAnswer();
                     view.postDelayed(new Runnable() {
                         public void run() {
                             play = MediaPlayer.create(view.getContext(), R.raw.wrong);
                             play.start();
                             NextQuestion(2);
-                            Answer3.setTextColor(getResources().getColor(R.color.Black));
+                            ResetBTNColor();
                         }
                     }, 1000);
-                }
-
-                else
-                {
-                    Answer3.setTextColor(getResources().getColor(R.color.Green));
+                } else {
+                    Answer3.setBackgroundColor(getResources().getColor(R.color.Green));
                     view.postDelayed(new Runnable() {
                         public void run() {
                             play = MediaPlayer.create(view.getContext(), R.raw.good);
                             play.start();
                             NextQuestion(1);
-                            Answer3.setTextColor(getResources().getColor(R.color.Black));
+                            ResetBTNColor();
                         }
                     }, 1000);
                 }
@@ -189,27 +189,25 @@ public class QuestionsScreen extends AppCompatActivity {
             @Override
             public void onClick(final View view) {
 
-                if(list.get(_rand).getIsAnswer4() == false) {
-                    Answer4.setTextColor(getResources().getColor(R.color.Red));
+                if (list.get(_rand).getIsAnswer4() == false) {
+                    Answer4.setBackgroundColor(getResources().getColor(R.color.Red));
+                    ShowAnswer();
                     view.postDelayed(new Runnable() {
                         public void run() {
                             play = MediaPlayer.create(view.getContext(), R.raw.wrong);
                             play.start();
                             NextQuestion(2);
-                            Answer4.setTextColor(getResources().getColor(R.color.Black));
+                            ResetBTNColor();
                         }
                     }, 1000);
-                }
-
-                else
-                {
-                    Answer4.setTextColor(getResources().getColor(R.color.Green));
+                } else {
+                    Answer4.setBackgroundColor(getResources().getColor(R.color.Green));
                     view.postDelayed(new Runnable() {
                         public void run() {
                             play = MediaPlayer.create(view.getContext(), R.raw.good);
                             play.start();
                             NextQuestion(1);
-                            Answer4.setTextColor(getResources().getColor(R.color.Black));
+                            ResetBTNColor();
                         }
                     }, 1000);
 
@@ -237,23 +235,22 @@ public class QuestionsScreen extends AppCompatActivity {
                 String redex = s.nextLine();
                 String[] parts = redex.split("((?=\\-)(?=\\-))");
                 for (i = 0; i < correct.length; ++i)
-                    correct[i]=false;
+                    correct[i] = false;
 
-                for(i = 1; i < parts.length; ++i) {
-                    if(parts[i].charAt(1) == '*') {
+                for (i = 1; i < parts.length; ++i) {
+                    if (parts[i].charAt(1) == '*') {
                         parts[i] = parts[i].substring(2);
-                        correct[i-1] = true;
-                    }
-                    else {
+                        correct[i - 1] = true;
+                    } else {
                         parts[i] = parts[i].substring(1);
                     }
                 }
 
                 question = parts[0];
-                a1=parts[1];
-                a2=parts[2];
-                a3=parts[3];
-                a4=parts[4];
+                a1 = parts[1];
+                a2 = parts[2];
+                a3 = parts[3];
+                a4 = parts[4];
                 QandA temp = new QandA(question, a1, a2, a3, a4);
                 temp.setIsAnswer1(correct[0]);
                 temp.setIsAnswer2(correct[1]);
@@ -273,42 +270,39 @@ public class QuestionsScreen extends AppCompatActivity {
         return list;
     }
 
-    public int GetListSize()
-    {
+    public int GetListSize() {
         return list.size();
     }
 
-    public String GetListQuestion(int index)
-    {
+    public String GetListQuestion(int index) {
         return list.get(index).getQuestion();
     }
-    public String GetListAnswer1(int index)
-    {
+
+    public String GetListAnswer1(int index) {
         return list.get(index).getAnswer1();
     }
-    public String GetListAnswer2(int index)
-    {
+
+    public String GetListAnswer2(int index) {
         return list.get(index).getAnswer2();
     }
-    public String GetListAnswer3(int index)
-    {
+
+    public String GetListAnswer3(int index) {
         return list.get(index).getAnswer3();
     }
-    public String GetListAnswer4(int index)
-    {
+
+    public String GetListAnswer4(int index) {
         return list.get(index).getAnswer4();
     }
 
-    public void NextQuestion(int _switch)
-    {
+    public void NextQuestion(int _switch) {
         TextView questiontxt = (TextView) findViewById(R.id.QuestionText);
         TextView life = (TextView) findViewById(R.id.Lifetxt);
         TextView score = (TextView) findViewById(R.id.Scoretxt);
+        ResetBTNColor();
 
-        switch (_switch)
-        {
+        switch (_switch) {
             case 1:
-                Score += 100;
+                Score += time*10;
                 break;
             case 2:
                 Life -= 1;
@@ -316,8 +310,7 @@ public class QuestionsScreen extends AppCompatActivity {
             default:
                 break;
         }
-        if(Life <= 0 || PlayedQuestions.size() >= 50)
-            finish();
+
 
         int rand = Math.abs(r.nextInt()) % list.size();
 
@@ -326,6 +319,7 @@ public class QuestionsScreen extends AppCompatActivity {
                 rand = Math.abs(r.nextInt()) % list.size();
         }
 
+        globalrand = rand;
         PlayedQuestions.add(rand);
 
         question = list.get(rand).getQuestion();
@@ -339,43 +333,79 @@ public class QuestionsScreen extends AppCompatActivity {
         configureAnswer2btn(rand);
         configureAnswer3btn(rand);
         configureAnswer4btn(rand);
-        questiontxt.setTextSize(34);
+        questiontxt.setTextSize(28);
         questiontxt.setText(question);
         score.setText("Score: " + Score);
         life.setText("Life: " + Life);
         configureTimer();
 
+        if (Life <= 0 || PlayedQuestions.size() >= 50) {
+            waitTimer.cancel();
+            finish();
+        }
     }
+
     //timer
-    public void configureTimer(){
-       waitTimer = new CountDownTimer(16000, 1000) {
+    public void configureTimer() {
+        waitTimer = new CountDownTimer(16000, 1000) {
             TextView timer = (TextView) findViewById(R.id.TimerText);
 
             public void onTick(long millisUntilFinished) {
                 timer.setTextColor(Color.BLUE);
 
-                timer.setText(""+millisUntilFinished / 1000);
+                timer.setText("" + millisUntilFinished / 1000);
+                time = (long) (Integer.parseInt(String.valueOf(millisUntilFinished)) / 1000);
 
-                if (millisUntilFinished<6000){
+                if (millisUntilFinished < 6000) {
                     timer.setTextColor(Color.RED);
-
+                    timeover.start();
                 }
 
             }
 
             public void onFinish() {
-                timer.setText("0");
+                play.start();
+                ShowAnswer();
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
-                        NextQuestion(2);
 
+                        NextQuestion(2);
                     }
-                }, 3000);
+                }, 2000);
 
             }
         }.start();
     }
 
+    private void ShowAnswer() {
+        Button Answerbtn1 = (Button) findViewById(R.id.Answer1BTN);
+        Button Answerbtn2 = (Button) findViewById(R.id.Answer2BTN);
+        Button Answerbtn3 = (Button) findViewById(R.id.Answer3BTN);
+        Button Answerbtn4 = (Button) findViewById(R.id.Answer4BTN);
+
+        if (list.get(globalrand).getIsAnswer1() == true)
+            Answerbtn1.setBackgroundColor(getResources().getColor(R.color.Green));
+
+        if (list.get(globalrand).getIsAnswer2() == true)
+            Answerbtn2.setBackgroundColor(getResources().getColor(R.color.Green));
+
+        if(list.get(globalrand).getIsAnswer3() == true)
+        Answerbtn3.setBackgroundColor(getResources().getColor(R.color.Green));
+
+        if(list.get(globalrand).getIsAnswer4() == true)
+        Answerbtn4.setBackgroundColor(getResources().getColor(R.color.Green));
+    }
+
+    private void ResetBTNColor() {
+        Button Answerbtn1 = (Button) findViewById(R.id.Answer1BTN);
+        Button Answerbtn2 = (Button) findViewById(R.id.Answer2BTN);
+        Button Answerbtn3 = (Button) findViewById(R.id.Answer3BTN);
+        Button Answerbtn4 = (Button) findViewById(R.id.Answer4BTN);
+        Answerbtn1.setBackgroundColor(getResources().getColor(R.color.Gray));
+        Answerbtn2.setBackgroundColor(getResources().getColor(R.color.Gray));
+        Answerbtn3.setBackgroundColor(getResources().getColor(R.color.Gray));
+        Answerbtn4.setBackgroundColor(getResources().getColor(R.color.Gray));
+    }
 
 }
 

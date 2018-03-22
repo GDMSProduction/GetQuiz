@@ -58,48 +58,52 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Answer 1"
+        android:background="@color/Gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.39" />
+        app:layout_constraintVertical_bias="0.50" />
 
     <Button
         android:id="@+id/Answer2BTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Answer 2"
+        android:background="@color/Gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.546" />
+        app:layout_constraintVertical_bias="0.646" />
 
     <Button
         android:id="@+id/Answer3BTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Answer 3"
+        android:background="@color/Gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.691" />
+        app:layout_constraintVertical_bias="0.791" />
 
     <Button
         android:id="@+id/Answer4BTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Answer 4"
+        android:background="@color/Gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.842" />
+        app:layout_constraintVertical_bias="0.942" />
 
     <Button
         android:id="@+id/QuestionsBackBTN"
