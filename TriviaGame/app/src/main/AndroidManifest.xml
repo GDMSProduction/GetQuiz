@@ -3,8 +3,7 @@
     package="fullsailclass.triviagame">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
->>>>>>> 7411758b041f936f8ce5109bc625a36d54bd6c71
+    >>>>>>> 7411758b041f936f8ce5109bc625a36d54bd6c71
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,14 +22,17 @@
         <activity android:name=".MultiplayerScreen" />
         <activity android:name=".SettingsScreen" />
         <activity android:name=".QuestionsScreen" />
-        <activity android:name=".CreditsScreen"/>
+        <activity android:name=".CreditsScreen" />
         <activity android:name=".HistoryScreen" />
         <activity android:name=".ScienceScreen" />
         <activity android:name=".MusicScreen" />
         <activity android:name=".GamesScreen" />
         <activity android:name=".EntertainmentScreen" />
-
-        <activity android:name=".SportsScreen"></activity>
+        <activity android:name=".SportsScreen" />
+        <activity android:name=".CorrectPopUp" />
+        <activity android:name=".GameOverPopUp"
+            android:theme="@style/AppTheme.CustomTheme"
+            ></activity>
     </application>
 
 </manifest>
