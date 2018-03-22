@@ -1,6 +1,7 @@
 package fullsailclass.triviagame;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -33,7 +34,7 @@ public class QuestionsScreen extends AppCompatActivity {
     List<Integer> PlayedQuestions = new ArrayList<Integer>();
     MainMenu menu = new MainMenu();
     Random r = new Random();
-    MediaPlayer play, timeover, gameover;
+    MediaPlayer play, timeover, gameover, wrong;
     CountDownTimer waitTimer = null;
     int Score = 0;
     int Life = 3;
@@ -56,6 +57,7 @@ public class QuestionsScreen extends AppCompatActivity {
         NextQuestion(0);
         timeover = MediaPlayer.create(this.getBaseContext(), R.raw.timersdonesound);
         play = MediaPlayer.create(this.getBaseContext(), R.raw.wrong);
+        wrong = MediaPlayer.create(this.getBaseContext(), R.raw.wrong);
         gameover = MediaPlayer.create(this.getBaseContext(),R.raw.gameover);
 
 
@@ -341,8 +343,16 @@ public class QuestionsScreen extends AppCompatActivity {
 
         if (Life <= 0 || PlayedQuestions.size() >= 50) {
             waitTimer.cancel();
+            gameover.start();
+            changeActivity();
             finish();
         }
+    }
+
+    public void changeActivity()
+    {
+        Intent intent = new Intent(QuestionsScreen.this, GameOverPopUp.class);
+        startActivity(intent);
     }
 
     //timer
@@ -364,11 +374,11 @@ public class QuestionsScreen extends AppCompatActivity {
             }
 
             public void onFinish() {
-                play.start();
+                wrong.start();
                 ShowAnswer();
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
-
+                        waitTimer.cancel();
                         NextQuestion(2);
                     }
                 }, 2000);

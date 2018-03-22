@@ -28,8 +28,9 @@
         <activity android:name=".MusicScreen" />
         <activity android:name=".GamesScreen" />
         <activity android:name=".EntertainmentScreen" />
-
-        <activity android:name=".SportsScreen"></activity>
+        <activity android:name=".SportsScreen"/>
+        <activity android:name=".GameOverPopUp"
+            android:theme="@style/AppTheme.CustomTheme"></activity>
     </application>
 
 </manifest>
