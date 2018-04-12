@@ -1,23 +1,25 @@
 package fullsailclass.triviagame;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toolbar;
-
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 public class SoloScreen extends AppCompatActivity {
-
+    MediaPlayer backgroundM;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solo_screen);
+
+        /*
+        backgroundM = MediaPlayer.create(SoloScreen.this, R.raw.backgroundmusic);
+        backgroundM.setLooping(true);
+        backgroundM.start();
+        backgroundM.setVolume(1.00f , 1.00f);
+        */
 
         configureSGBackButton();
         configureEntertainmentButton();
@@ -32,7 +34,7 @@ public class SoloScreen extends AppCompatActivity {
     }
 
     public void configureSGBackButton() {
-        Button back = (Button) findViewById(R.id.Back);
+        final Button back = (Button) findViewById(R.id.Back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

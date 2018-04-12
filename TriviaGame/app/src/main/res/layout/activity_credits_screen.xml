@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fullsailclass.triviagame.CreditsScreen">
+    tools:context="fullsailclass.triviagame.CreditsScreen"
+    android:background="@drawable/background1">
 
     <TextView
         android:id="@+id/ProgrammedByText"
@@ -13,23 +14,29 @@
         android:text="Programmed by:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.54"
+        android:textColor="@color/Black"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.469" />
+        app:layout_constraintVertical_bias="0.469"
+        android:textSize="16dp"
+        />
 
     <TextView
         android:id="@+id/ProgramNamesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Jose Otero Perez\nand\nJesus Antonio Fragoso Jr."
+        android:textColor="@color/Black"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.556"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.572" />
+        app:layout_constraintVertical_bias="0.572"
+        android:textSize="18dp"
+        />
 
     <TextView
         android:id="@+id/ProducedByText"
@@ -41,7 +48,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        android:textColor="@color/Black"
+        app:layout_constraintVertical_bias="0.25"
+        android:textSize="16dp"
+        />
 
     <TextView
         android:id="@+id/ProducedNamesText"
@@ -54,13 +64,35 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.31" />
+        android:textColor="@color/Black"
+        app:layout_constraintVertical_bias="0.31"
+        android:textSize="18dp"
+        />
+    <TextView
+        android:id="@+id/MusicCredit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Music: www.bensound.com"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/Black"
+        app:layout_constraintVertical_bias="0.7"
+        android:textSize="18dp"
+        />
+
+
 
     <Button
         android:id="@+id/CreditsBackBTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
         android:text="Back"
+        android:background="@drawable/menubutton"
+        android:textColor="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.989"
         app:layout_constraintLeft_toLeftOf="parent"

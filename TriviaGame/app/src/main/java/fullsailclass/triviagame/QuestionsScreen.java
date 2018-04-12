@@ -38,15 +38,13 @@ public class QuestionsScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions_screen);
+
         Life = 3;
         category = getIntent().getExtras().getString("Category");
-
         OpenFile(category);
-
         setTitle("Questions");
         NextQuestion(0);
         SetupSound();
-
     }
 
     public void configureQuestionsBackButton() {
@@ -88,7 +86,8 @@ public class QuestionsScreen extends AppCompatActivity {
                     }, 1000);
 
                 }
-                SetupTimeSound();
+                timeover.release();
+                SetupSound();
                 waitTimer.cancel();
 
             }
@@ -122,7 +121,8 @@ public class QuestionsScreen extends AppCompatActivity {
                         }
                     }, 1000);
                 }
-                SetupTimeSound();
+                timeover.release();
+                SetupSound();
                 waitTimer.cancel();
 
 
@@ -157,7 +157,8 @@ public class QuestionsScreen extends AppCompatActivity {
                         }
                     }, 1000);
                 }
-                SetupTimeSound();
+                timeover.release();
+                SetupSound();
                 waitTimer.cancel();
 
             }
@@ -193,7 +194,8 @@ public class QuestionsScreen extends AppCompatActivity {
                     }, 1000);
 
                 }
-                SetupTimeSound();
+                timeover.release();
+                SetupSound();
                 waitTimer.cancel();
 
 
@@ -393,10 +395,10 @@ public class QuestionsScreen extends AppCompatActivity {
         Button Answerbtn2 = (Button) findViewById(R.id.Answer2BTN);
         Button Answerbtn3 = (Button) findViewById(R.id.Answer3BTN);
         Button Answerbtn4 = (Button) findViewById(R.id.Answer4BTN);
-        Answerbtn1.setBackgroundColor(getResources().getColor(R.color.Gray));
-        Answerbtn2.setBackgroundColor(getResources().getColor(R.color.Gray));
-        Answerbtn3.setBackgroundColor(getResources().getColor(R.color.Gray));
-        Answerbtn4.setBackgroundColor(getResources().getColor(R.color.Gray));
+        Answerbtn1.setBackgroundColor(getResources().getColor(R.color.DarkBlueGray));
+        Answerbtn2.setBackgroundColor(getResources().getColor(R.color.DarkBlueGray));
+        Answerbtn3.setBackgroundColor(getResources().getColor(R.color.DarkBlueGray));
+        Answerbtn4.setBackgroundColor(getResources().getColor(R.color.DarkBlueGray));
     }
 
     private void SetupSound()
@@ -407,11 +409,12 @@ public class QuestionsScreen extends AppCompatActivity {
         gameover = MediaPlayer.create(this.getBaseContext(),R.raw.gameover);
     }
 
+    /*
     private void SetupTimeSound()
     {
-        timeover.release();
         timeover = MediaPlayer.create(this.getBaseContext(), R.raw.timersdonesound);
     }
+    */
 
 }
 

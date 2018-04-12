@@ -9,7 +9,6 @@ import android.widget.Button;
 
 
 public class MainMenu extends AppCompatActivity {
-
 MediaPlayer backgroundM;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,20 +25,9 @@ MediaPlayer backgroundM;
         backgroundM = MediaPlayer.create(MainMenu.this, R.raw.backgroundmusic);
         backgroundM.setLooping(true);
         backgroundM.start();
-        backgroundM.setVolume(1.00f , 1.00f);
+        backgroundM.setVolume(0.25f , 0.25f);
+
     }
-
-
-    //fix this i dont know how to pause the music when the user does somethings
-
-    @Override
-    protected void onPause(){
-        super.onPause();
-        backgroundM.release();
-        finish();
-    }
-
-
 
 
     public void configureSoloButton() {
