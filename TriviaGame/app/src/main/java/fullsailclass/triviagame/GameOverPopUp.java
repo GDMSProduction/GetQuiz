@@ -12,25 +12,41 @@ import android.view.View;
 import android.widget.Button;
 
 public class GameOverPopUp extends AppCompatActivity {
-//poop
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over_pop_up);
 
+        configureMainMenu();
 
-
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-
-
-        int width = dm.widthPixels;
-        int height = dm.heightPixels;
-
-        getWindow().setLayout((int)(width*.6),(int)(height*.1));
-
+        configureCatergory();
 
     };
+
+    public void configureMainMenu() {
+        Button solo = (Button) findViewById(R.id.GoMain);
+        solo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GameOverPopUp.this, MainMenu.class));
+            }
+
+        });
+
+    }
+
+    public void configureCatergory() {
+        Button back = (Button) findViewById(R.id.SelectCat);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                finish();
+
+            }
+
+        });
+    }
 
 
 

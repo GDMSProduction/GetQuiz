@@ -19,10 +19,10 @@ MediaPlayer backgroundM;
         configureMultiplayerButton();
         configureSoloButton();
         configureSettingsButton();
-<<<<<<< HEAD
+
         setTitle("Main Menu");
 
-=======
+
         configureCreditsButton();
 
 
@@ -41,7 +41,7 @@ MediaPlayer backgroundM;
         super.onPause();
         backgroundM.release();
         finish();
->>>>>>> dbe66eacf180f95431c40d24acab42f7d1c61829
+
     }
 
 
