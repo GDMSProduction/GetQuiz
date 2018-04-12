@@ -26,6 +26,7 @@ public class SoloScreen extends AppCompatActivity {
         configureMusicButton();
         configureScienceButton();
         configureSportsButton();
+        configurePopcultureButton();
 
         setTitle("Solo Menu");
     }
@@ -35,9 +36,7 @@ public class SoloScreen extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 finish();
-
             }
 
         });
@@ -51,7 +50,6 @@ public class SoloScreen extends AppCompatActivity {
                 Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
                 intent.putExtra("Category", "entertainment_questions.txt");
                 startActivity(intent);
-                //startActivity(new Intent(SoloScreen.this, EntertainmentScreen.class));
             }
 
         });
@@ -65,9 +63,6 @@ public class SoloScreen extends AppCompatActivity {
                 Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
                 intent.putExtra("Category", "game_questions.txt");
                 startActivity(intent);
-
-                //startActivity(new Intent(SoloScreen.this, QuestionsScreen.class));
-
             }
 
         });
@@ -81,7 +76,6 @@ public class SoloScreen extends AppCompatActivity {
                 Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
                 intent.putExtra("Category", "history_questions.txt");
                 startActivity(intent);
-                //startActivity(new Intent(SoloScreen.this, HistoryScreen.class));
             }
 
         });
@@ -95,7 +89,6 @@ public class SoloScreen extends AppCompatActivity {
                 Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
                 intent.putExtra("Category", "music_questions.txt");
                 startActivity(intent);
-                //startActivity(new Intent(SoloScreen.this, MusicScreen.class));
             }
 
         });
@@ -109,9 +102,6 @@ public class SoloScreen extends AppCompatActivity {
                 Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
                 intent.putExtra("Category", "science_questions.txt");
                 startActivity(intent);
-                //startActivity(new Intent(SoloScreen.this, ScienceScreen.class));
-
-
             }
 
         });
@@ -125,7 +115,19 @@ public class SoloScreen extends AppCompatActivity {
                 Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
                 intent.putExtra("Category", "sports_questions.txt");
                 startActivity(intent);
-               // startActivity(new Intent(SoloScreen.this, SportsScreen.class));
+            }
+
+        });
+    }
+
+    public void configurePopcultureButton() {
+        Button sports = (Button) findViewById(R.id.Popculture);
+        sports.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
+                intent.putExtra("Category", "popculture_questions.txt");
+                startActivity(intent);
             }
 
         });

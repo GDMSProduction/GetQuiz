@@ -3,31 +3,21 @@ package fullsailclass.triviagame;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-
-import android.media.MediaPlayer;
-
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
-import junit.framework.Test;
-
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class QuestionsScreen extends AppCompatActivity {
     List<QandA> list = new ArrayList<QandA>();
@@ -55,11 +45,7 @@ public class QuestionsScreen extends AppCompatActivity {
 
         setTitle("Questions");
         NextQuestion(0);
-        timeover = MediaPlayer.create(this.getBaseContext(), R.raw.timersdonesound);
-        play = MediaPlayer.create(this.getBaseContext(), R.raw.wrong);
-        wrong = MediaPlayer.create(this.getBaseContext(), R.raw.wrong);
-        gameover = MediaPlayer.create(this.getBaseContext(),R.raw.gameover);
-
+        SetupSound();
 
     }
 
@@ -86,8 +72,7 @@ public class QuestionsScreen extends AppCompatActivity {
                     ShowAnswer();
                     view.postDelayed(new Runnable() {
                         public void run() {
-                            play = MediaPlayer.create(view.getContext(), R.raw.wrong);
-                            play.start();
+                            wrong.start();
                             NextQuestion(2);
                             ResetBTNColor();
                         }
@@ -96,7 +81,6 @@ public class QuestionsScreen extends AppCompatActivity {
                     Answer1.setBackgroundColor(getResources().getColor(R.color.Green));
                     view.postDelayed(new Runnable() {
                         public void run() {
-                            play = MediaPlayer.create(view.getContext(), R.raw.good);
                             play.start();
                             NextQuestion(1);
                             ResetBTNColor();
@@ -104,7 +88,7 @@ public class QuestionsScreen extends AppCompatActivity {
                     }, 1000);
 
                 }
-
+                SetupTimeSound();
                 waitTimer.cancel();
 
             }
@@ -123,8 +107,7 @@ public class QuestionsScreen extends AppCompatActivity {
                     ShowAnswer();
                     view.postDelayed(new Runnable() {
                         public void run() {
-                            play = MediaPlayer.create(view.getContext(), R.raw.wrong);
-                            play.start();
+                            wrong.start();
                             NextQuestion(2);
                             ResetBTNColor();
                         }
@@ -133,14 +116,13 @@ public class QuestionsScreen extends AppCompatActivity {
                     Answer2.setBackgroundColor(getResources().getColor(R.color.Green));
                     view.postDelayed(new Runnable() {
                         public void run() {
-                            play = MediaPlayer.create(view.getContext(), R.raw.good);
                             play.start();
                             NextQuestion(1);
                             ResetBTNColor();
-
                         }
                     }, 1000);
                 }
+                SetupTimeSound();
                 waitTimer.cancel();
 
 
@@ -160,8 +142,7 @@ public class QuestionsScreen extends AppCompatActivity {
                     ShowAnswer();
                     view.postDelayed(new Runnable() {
                         public void run() {
-                            play = MediaPlayer.create(view.getContext(), R.raw.wrong);
-                            play.start();
+                            wrong.start();
                             NextQuestion(2);
                             ResetBTNColor();
                         }
@@ -170,13 +151,13 @@ public class QuestionsScreen extends AppCompatActivity {
                     Answer3.setBackgroundColor(getResources().getColor(R.color.Green));
                     view.postDelayed(new Runnable() {
                         public void run() {
-                            play = MediaPlayer.create(view.getContext(), R.raw.good);
                             play.start();
                             NextQuestion(1);
                             ResetBTNColor();
                         }
                     }, 1000);
                 }
+                SetupTimeSound();
                 waitTimer.cancel();
 
             }
@@ -196,8 +177,7 @@ public class QuestionsScreen extends AppCompatActivity {
                     ShowAnswer();
                     view.postDelayed(new Runnable() {
                         public void run() {
-                            play = MediaPlayer.create(view.getContext(), R.raw.wrong);
-                            play.start();
+                            wrong.start();
                             NextQuestion(2);
                             ResetBTNColor();
                         }
@@ -206,7 +186,6 @@ public class QuestionsScreen extends AppCompatActivity {
                     Answer4.setBackgroundColor(getResources().getColor(R.color.Green));
                     view.postDelayed(new Runnable() {
                         public void run() {
-                            play = MediaPlayer.create(view.getContext(), R.raw.good);
                             play.start();
                             NextQuestion(1);
                             ResetBTNColor();
@@ -214,6 +193,7 @@ public class QuestionsScreen extends AppCompatActivity {
                     }, 1000);
 
                 }
+                SetupTimeSound();
                 waitTimer.cancel();
 
 
@@ -341,7 +321,7 @@ public class QuestionsScreen extends AppCompatActivity {
         life.setText("Life: " + Life);
         configureTimer();
 
-        if (Life <= 0 || PlayedQuestions.size() >= 50) {
+        if (Life <= 0 || PlayedQuestions.size() >= 25) {
             waitTimer.cancel();
             gameover.start();
             changeActivity();
@@ -368,8 +348,10 @@ public class QuestionsScreen extends AppCompatActivity {
 
                 if (millisUntilFinished < 6000) {
                     timer.setTextColor(Color.RED);
-                    timeover.start();
                 }
+                if (millisUntilFinished < 6000 && millisUntilFinished > 5000)
+                    timeover.start();
+
 
             }
 
@@ -415,6 +397,20 @@ public class QuestionsScreen extends AppCompatActivity {
         Answerbtn2.setBackgroundColor(getResources().getColor(R.color.Gray));
         Answerbtn3.setBackgroundColor(getResources().getColor(R.color.Gray));
         Answerbtn4.setBackgroundColor(getResources().getColor(R.color.Gray));
+    }
+
+    private void SetupSound()
+    {
+        timeover = MediaPlayer.create(this.getBaseContext(), R.raw.timersdonesound);
+        play = MediaPlayer.create(this.getBaseContext(), R.raw.good);
+        wrong = MediaPlayer.create(this.getBaseContext(), R.raw.wrong);
+        gameover = MediaPlayer.create(this.getBaseContext(),R.raw.gameover);
+    }
+
+    private void SetupTimeSound()
+    {
+        timeover.release();
+        timeover = MediaPlayer.create(this.getBaseContext(), R.raw.timersdonesound);
     }
 
 }
