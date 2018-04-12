@@ -24,6 +24,7 @@ public class MainMenu extends AppCompatActivity {
         configureSoloButton();
         configureSettingsButton();
         setTitle("Main Menu");
+
     }
 
     public void configureSoloButton() {
