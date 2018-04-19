@@ -15,7 +15,16 @@ public class CreditsScreen extends AppCompatActivity {
         configureCreditBackButton();
         setTitle("Credits");
     }
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MainMenu.backgroundM.pause();
+    }
+    @Override
+    protected  void onResume(){
+        super.onResume();
+        MainMenu.backgroundM.start();
+    }
     public void configureCreditBackButton() {
         Button creditsBack = (Button) findViewById(R.id.CreditsBackBTN);
         creditsBack.setOnClickListener(new View.OnClickListener() {

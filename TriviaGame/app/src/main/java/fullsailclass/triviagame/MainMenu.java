@@ -9,26 +9,35 @@ import android.widget.Button;
 
 
 public class MainMenu extends AppCompatActivity {
-MediaPlayer backgroundM;
+    static MediaPlayer backgroundM;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-
         configureMultiplayerButton();
         configureSoloButton();
         configureSettingsButton();
+
+        setTitle("Main Menu");
+
+
         configureCreditsButton();
-
-
 
         backgroundM = MediaPlayer.create(MainMenu.this, R.raw.backgroundmusic);
         backgroundM.setLooping(true);
         backgroundM.start();
-        backgroundM.setVolume(0.25f , 0.25f);
-
+        backgroundM.setVolume(0.20f , 0.20f);
     }
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+            backgroundM.pause();
+    }
+    @Override
+    protected  void onResume(){
+        super.onResume();
+        backgroundM.start();
+    }
 
     public void configureSoloButton() {
         Button solo = (Button) findViewById(R.id.Solo);

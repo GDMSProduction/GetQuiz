@@ -10,11 +10,13 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -25,11 +27,13 @@ public class QuestionsScreen extends AppCompatActivity {
     MainMenu menu = new MainMenu();
     Random r = new Random();
     MediaPlayer play, timeover, gameover, wrong;
+    static MediaPlayer backgroundMusic;
     CountDownTimer waitTimer = null;
     int Score = 0;
     int Life = 3;
     int globalrand = 0;
     long time = 0;
+    Integer curQuestion = 0;
     String category;
     String question, answer1, answer2, answer3, answer4;
 
@@ -43,16 +47,31 @@ public class QuestionsScreen extends AppCompatActivity {
         category = getIntent().getExtras().getString("Category");
         OpenFile(category);
         setTitle("Questions");
-        NextQuestion(0);
         SetupSound();
+        MainMenu.backgroundM.pause();
+        BackgroundMusic(category);
+        PopulatePlayedQuestions();
+        NextQuestion(0);
     }
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        backgroundMusic.pause();
+    }
+    @Override
+    protected  void onResume() {
+        super.onResume();
+        backgroundMusic.start();
+    }
     public void configureQuestionsBackButton() {
         Button back = (Button) findViewById(R.id.QuestionsBackBTN);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 waitTimer.cancel();
+                timeover.release();
+                backgroundMusic.pause();
+                MainMenu.backgroundM.start();
                 finish();
             }
 
@@ -283,7 +302,6 @@ public class QuestionsScreen extends AppCompatActivity {
         TextView life = (TextView) findViewById(R.id.Lifetxt);
         TextView score = (TextView) findViewById(R.id.Scoretxt);
         ResetBTNColor();
-
         switch (_switch) {
             case 1:
                 Score += time*10;
@@ -295,16 +313,9 @@ public class QuestionsScreen extends AppCompatActivity {
                 break;
         }
 
-
-        int rand = Math.abs(r.nextInt()) % list.size();
-
-        for (int i = 0; i < PlayedQuestions.size(); ++i) {
-            if (PlayedQuestions.get(i) == rand)
-                rand = Math.abs(r.nextInt()) % list.size();
-        }
+        int rand = PlayedQuestions.get(curQuestion);
 
         globalrand = rand;
-        PlayedQuestions.add(rand);
 
         question = list.get(rand).getQuestion();
         answer1 = list.get(rand).getAnswer1();
@@ -322,8 +333,8 @@ public class QuestionsScreen extends AppCompatActivity {
         score.setText("Score: " + Score);
         life.setText("Life: " + Life);
         configureTimer();
-
-        if (Life <= 0 || PlayedQuestions.size() >= 25) {
+        curQuestion++;
+        if (Life <= 0 || curQuestion >= 20) {
             waitTimer.cancel();
             gameover.start();
             changeActivity();
@@ -409,12 +420,50 @@ public class QuestionsScreen extends AppCompatActivity {
         gameover = MediaPlayer.create(this.getBaseContext(),R.raw.gameover);
     }
 
-    /*
-    private void SetupTimeSound()
+    private void PopulatePlayedQuestions()
     {
-        timeover = MediaPlayer.create(this.getBaseContext(), R.raw.timersdonesound);
+        for (int i = 0; i < list.size(); ++i){
+            PlayedQuestions.add(i);
+        }
+        Collections.shuffle(PlayedQuestions);
     }
-    */
+
+    private void BackgroundMusic(String category) {
+        ImageView background =(ImageView) findViewById(R.id.background);
+        if(category.equals("entertainment_questions.txt"))
+        {
+            backgroundMusic = MediaPlayer.create(QuestionsScreen.this, R.raw.entertainmentcategory);
+        }
+        else if(category.equals("game_questions.txt"))
+        {
+            backgroundMusic = MediaPlayer.create(QuestionsScreen.this, R.raw.gamescategory);
+        }
+        else if(category.equals("history_questions.txt"))
+        {
+            background.setImageResource(R.drawable.history1);
+            backgroundMusic = MediaPlayer.create(QuestionsScreen.this, R.raw.historycategory);
+        }
+        else if(category.equals("music_questions.txt"))
+        {
+            backgroundMusic = MediaPlayer.create(QuestionsScreen.this, R.raw.musiccategory);
+        }
+        else if(category.equals("science_questions.txt"))
+        {
+            backgroundMusic = MediaPlayer.create(QuestionsScreen.this, R.raw.sciencecategory);
+        }
+        else if(category.equals("sports_questions.txt"))
+        {
+            backgroundMusic = MediaPlayer.create(QuestionsScreen.this, R.raw.sportscategory);
+        }
+        else if(category.equals("popculture_questions.txt"))
+        {
+            backgroundMusic = MediaPlayer.create(QuestionsScreen.this, R.raw.popculturecategory);
+        }
+
+        backgroundMusic.setLooping(true);
+        backgroundMusic.start();
+        backgroundMusic.setVolume(0.20f , 0.20f);
+    }
 
 }
 

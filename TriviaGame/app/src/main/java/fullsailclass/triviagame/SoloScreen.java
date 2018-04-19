@@ -1,14 +1,13 @@
 package fullsailclass.triviagame;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 public class SoloScreen extends AppCompatActivity {
-    MediaPlayer backgroundM;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +19,6 @@ public class SoloScreen extends AppCompatActivity {
         backgroundM.start();
         backgroundM.setVolume(1.00f , 1.00f);
         */
-
         configureSGBackButton();
         configureEntertainmentButton();
         configureGamesButton();
@@ -31,6 +29,17 @@ public class SoloScreen extends AppCompatActivity {
         configurePopcultureButton();
 
         setTitle("Solo Menu");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MainMenu.backgroundM.pause();
+    }
+    @Override
+    protected  void onResume(){
+        super.onResume();
+        MainMenu.backgroundM.start();
     }
 
     public void configureSGBackButton() {

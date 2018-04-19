@@ -10,5 +10,6 @@
     
     <style name="AppTheme.CustomTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="colorPrimaryDark">@color/Red</item>
     </style>
 </resources>

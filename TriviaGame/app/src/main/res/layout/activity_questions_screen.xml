@@ -8,6 +8,31 @@
     android:layout_height="match_parent"
     tools:context="fullsailclass.triviagame.QuestionsScreen">
 
+
+
+
+    <ImageView
+        android:layout_width="393dp"
+        android:layout_height="600dp"
+        android:textAlignment="center"
+        android:background="@drawable/background1"
+        android:id="@+id/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:layout_width="400dp"
+        android:layout_height="80dp"
+        android:textAlignment="center"
+        android:background="@color/BlueGray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.00"
+        app:layout_constraintHorizontal_bias="0.40"/>
     <TextView
         android:id="@+id/QuestionText"
         android:layout_width="wrap_content"
@@ -20,9 +45,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.172"
-
-
         />
+
     <TextView
         android:id="@+id/Scoretxt"
         android:layout_width="wrap_content"
@@ -30,7 +54,7 @@
         android:text="Score"
         android:gravity="center_horizontal"
         android:textSize="20dp"
-        android:textColor="@color/Black"
+        android:textColor="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -44,7 +68,7 @@
         android:layout_height="wrap_content"
         android:text="Life"
         android:textSize="20dp"
-        android:textColor="@color/Black"
+        android:textColor="@color/White"
         android:gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -54,6 +78,7 @@
         app:layout_constraintHorizontal_bias="0.03"
 
         />
+
 
     <Button
         android:id="@+id/Answer1BTN"
@@ -123,7 +148,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.008" />
+        app:layout_constraintVertical_bias="0.035" />
 
     <TextView
         android:id="@+id/TimerText"
@@ -137,6 +162,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.061" />
+        app:layout_constraintVertical_bias="0.031" />
+
 
 </android.support.constraint.ConstraintLayout>

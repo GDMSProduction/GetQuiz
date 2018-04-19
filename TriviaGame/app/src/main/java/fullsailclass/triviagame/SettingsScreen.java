@@ -29,6 +29,16 @@ public class SettingsScreen extends AppCompatActivity {
 
         setTitle("Settings");
     }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MainMenu.backgroundM.pause();
+    }
+    @Override
+    protected  void onResume(){
+        super.onResume();
+        MainMenu.backgroundM.start();
+    }
 
     private void configureBackMusicSeekbar() {
         backMusic= (SeekBar) findViewById(R.id.BackMusicSeekbar);

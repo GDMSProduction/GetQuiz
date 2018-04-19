@@ -1,36 +1,60 @@
 package fullsailclass.triviagame;
 
-import android.app.Dialog;
-import android.app.Notification;
 import android.content.Intent;
-import android.support.v4.app.NotificationCompatBase;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 public class GameOverPopUp extends AppCompatActivity {
-//poop
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over_pop_up);
 
+        configureMainMenu();
 
-
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-
-
-        int width = dm.widthPixels;
-        int height = dm.heightPixels;
-
-        getWindow().setLayout((int)(width*.6),(int)(height*.1));
-
+        configureCatergory();
 
     };
+    @Override
+    protected void onPause() {
+        super.onPause();
+       QuestionsScreen.backgroundMusic.pause();
+    }
+    @Override
+    protected  void onResume(){
+        super.onResume();
+        QuestionsScreen.backgroundMusic.start();
+    }
+
+    public void configureMainMenu() {
+        Button solo = (Button) findViewById(R.id.GoMain);
+        solo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GameOverPopUp.this, MainMenu.class));
+                MainMenu.backgroundM.release();
+                QuestionsScreen.backgroundMusic.release();
+            }
+
+        });
+
+    }
+
+    public void configureCatergory() {
+        Button back = (Button) findViewById(R.id.SelectCat);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                QuestionsScreen.backgroundMusic.release();
+                MainMenu.backgroundM.start();
+                finish();
+
+            }
+
+        });
+    }
 
 
 
