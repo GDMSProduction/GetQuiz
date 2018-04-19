@@ -9,11 +9,11 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class SettingsScreen extends AppCompatActivity {
-    int progressBackMusic=100;
+   static int progressBackMusic=100;
     SeekBar backMusic;
     TextView backmusicNum;
 
-    int progressSoundEffect=100;
+    static int progressSoundEffect=100;
     SeekBar soundEffect;
     TextView SoundEffectNum;
     @Override

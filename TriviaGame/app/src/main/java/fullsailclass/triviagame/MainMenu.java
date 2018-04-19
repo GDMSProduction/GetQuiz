@@ -1,6 +1,9 @@
 package fullsailclass.triviagame;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -31,18 +34,34 @@ MediaPlayer backgroundM;
         backgroundM.setLooping(true);
         backgroundM.start();
         backgroundM.setVolume(1.00f , 1.00f);
+
+
+        Intent intent = new Intent("finish_GameOver");
+        sendBroadcast(intent);
+
+        Intent splash = new Intent("finish_Splash");
+        sendBroadcast(splash);
+
+        BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+
+            @Override
+            public void onReceive(Context arg0, Intent intent) {
+                String action = intent.getAction();
+                if (action.equals("finish_MainMenu")) {
+                    finish();
+                    // DO WHATEVER YOU WANT.
+                }
+            }
+        };
+        registerReceiver(broadcastReceiver, new IntentFilter("finish_MainMenu"));
+
     }
+
+
 
 
     //fix this i dont know how to pause the music when the user does somethings
 
-    @Override
-    protected void onPause(){
-        super.onPause();
-        backgroundM.release();
-        finish();
-
-    }
 
 
 
@@ -87,6 +106,7 @@ MediaPlayer backgroundM;
             }
         });
     }
+
 
 
 }
