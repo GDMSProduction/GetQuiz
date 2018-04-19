@@ -9,9 +9,10 @@
 
     <Button
         android:id="@+id/Science"
-        android:layout_width="154dp"
-        android:layout_height="wrap_content"
+        android:layout_width="218dp"
+        android:layout_height="86dp"
         android:text="Science"
+        android:textSize="24sp"
         android:background="@drawable/menubutton"
         android:textColor="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,11 +23,11 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="147dp"
-        android:layout_height="76dp"
+        android:layout_width="279dp"
+        android:layout_height="103dp"
         android:text="Select a Category"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textSize="36sp"
         android:textColor="@color/Black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -36,9 +37,10 @@
 
     <Button
         android:id="@+id/Sports"
-        android:layout_width="154dp"
-        android:layout_height="wrap_content"
+        android:layout_width="218dp"
+        android:layout_height="86dp"
         android:text="Sports"
+        android:textSize="24sp"
         android:background="@drawable/menubutton"
         android:textColor="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,9 +51,10 @@
 
     <Button
         android:id="@+id/Popculture"
-        android:layout_width="154dp"
-        android:layout_height="wrap_content"
+        android:layout_width="218dp"
+        android:layout_height="86dp"
         android:text="Pop Culture"
+        android:textSize="24sp"
         android:background="@drawable/menubutton"
         android:textColor="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -62,9 +65,10 @@
 
     <Button
         android:id="@+id/History"
-        android:layout_width="154dp"
-        android:layout_height="wrap_content"
+        android:layout_width="218dp"
+        android:layout_height="86dp"
         android:text="History"
+        android:textSize="24sp"
         android:background="@drawable/menubutton"
         android:textColor="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -75,9 +79,10 @@
 
     <Button
         android:id="@+id/Entertainment"
-        android:layout_width="154dp"
-        android:layout_height="wrap_content"
+        android:layout_width="218dp"
+        android:layout_height="86dp"
         android:text="Entertainment"
+        android:textSize="24sp"
         android:background="@drawable/menubutton"
         android:textColor="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -88,9 +93,10 @@
 
     <Button
         android:id="@+id/Games"
-        android:layout_width="154dp"
-        android:layout_height="wrap_content"
+        android:layout_width="218dp"
+        android:layout_height="86dp"
         android:text="Video Game"
+        android:textSize="24sp"
         android:background="@drawable/menubutton"
         android:textColor="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -101,9 +107,10 @@
 
     <Button
         android:id="@+id/Music"
-        android:layout_width="154dp"
-        android:layout_height="wrap_content"
+        android:layout_width="218dp"
+        android:layout_height="86dp"
         android:text="Music"
+        android:textSize="24sp"
         android:background="@drawable/menubutton"
         android:textColor="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"

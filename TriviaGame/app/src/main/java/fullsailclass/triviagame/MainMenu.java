@@ -1,6 +1,9 @@
 package fullsailclass.triviagame;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -27,17 +30,40 @@ public class MainMenu extends AppCompatActivity {
         backgroundM.setLooping(true);
         backgroundM.start();
         backgroundM.setVolume(0.20f , 0.20f);
+
+
+        Intent intent = new Intent("finish_GameOver");
+        sendBroadcast(intent);
+
+        Intent splash = new Intent("finish_Splash");
+        sendBroadcast(splash);
+
+        BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+
+            @Override
+            public void onReceive(Context arg0, Intent intent) {
+                String action = intent.getAction();
+                if (action.equals("finish_MainMenu")) {
+                    finish();
+                    // DO WHATEVER YOU WANT.
+                }
+            }
+        };
+        registerReceiver(broadcastReceiver, new IntentFilter("finish_MainMenu"));
+
     }
     @Override
     protected void onPause() {
         super.onPause();
-            backgroundM.pause();
+        backgroundM.pause();
     }
     @Override
     protected  void onResume(){
         super.onResume();
         backgroundM.start();
     }
+
+
 
     public void configureSoloButton() {
         Button solo = (Button) findViewById(R.id.Solo);
@@ -79,6 +105,7 @@ public class MainMenu extends AppCompatActivity {
             }
         });
     }
+
 
 
 }

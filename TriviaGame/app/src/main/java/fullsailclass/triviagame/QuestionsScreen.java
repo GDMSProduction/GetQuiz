@@ -1,7 +1,10 @@
 package fullsailclass.triviagame;
 
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -37,7 +40,7 @@ public class QuestionsScreen extends AppCompatActivity {
     String category;
     String question, answer1, answer2, answer3, answer4;
 
-
+    int Category= 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +55,29 @@ public class QuestionsScreen extends AppCompatActivity {
         BackgroundMusic(category);
         PopulatePlayedQuestions();
         NextQuestion(0);
+
+        //Broadcast
+        Intent GameOver = new Intent("finish_GameOver");
+        sendBroadcast(GameOver);
+
+
+
+        //Receiver
+        BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+
+            @Override
+            public void onReceive(Context arg0, Intent intent) {
+                String action = intent.getAction();
+                if (action.equals("finish_Questions")) {
+                    finish();
+                    // DO WHATEVER YOU WANT.
+                }
+
+
+            }
+        };
+        registerReceiver(broadcastReceiver, new IntentFilter("finish_Questions"));
+
     }
     @Override
     protected void onPause() {

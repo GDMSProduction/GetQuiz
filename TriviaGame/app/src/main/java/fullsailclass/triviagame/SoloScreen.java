@@ -1,13 +1,17 @@
 package fullsailclass.triviagame;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 public class SoloScreen extends AppCompatActivity {
 
+    int Category = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +33,75 @@ public class SoloScreen extends AppCompatActivity {
         configurePopcultureButton();
 
         setTitle("Solo Menu");
+
+        //Broadcast
+        Intent GameOver = new Intent("finish_GameOver");
+        sendBroadcast(GameOver);
+
+        Intent Questions = new Intent("finish_Questions");
+        sendBroadcast(Questions);
+
+
+        //Receiver
+        BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+
+            @Override
+            public void onReceive(Context arg0, Intent intent) {
+                String action = intent.getAction();
+                if (action.equals("finish_solo_activity")) {
+                    finish();
+                    // DO WHATEVER YOU WANT.
+                }
+
+
+            }
+        };
+        registerReceiver(broadcastReceiver, new IntentFilter("finish_solo_activity"));
+
+
+        BroadcastReceiver categoryReceiver = new BroadcastReceiver() {
+
+            @Override
+            public void onReceive(Context arg0, Intent intent) {
+                String action = intent.getAction();
+                if (action.equals("restart")) {
+                    if (Category ==1) {
+                        Intent enter = new Intent(SoloScreen.this, QuestionsScreen.class);
+                        enter.putExtra("Category", "entertainment_questions.txt");
+                        startActivity(enter);
+                    }else if (Category ==2) {
+                        Intent enter = new Intent(SoloScreen.this, QuestionsScreen.class);
+                        enter.putExtra("Category", "game_questions.txt");
+                        startActivity(enter);
+                    }else if (Category ==3) {
+                        Intent enter = new Intent(SoloScreen.this, QuestionsScreen.class);
+                        enter.putExtra("Category", "history_questions.txt");
+                        startActivity(enter);
+                    }else if (Category ==4) {
+                        Intent enter = new Intent(SoloScreen.this, QuestionsScreen.class);
+                        enter.putExtra("Category", "music_questions.txt");
+                        startActivity(enter);
+                    }else if (Category ==5) {
+                        Intent enter = new Intent(SoloScreen.this, QuestionsScreen.class);
+                        enter.putExtra("Category", "science_questions.txt");
+                        startActivity(enter);
+                    }else if (Category ==6) {
+                        Intent enter = new Intent(SoloScreen.this, QuestionsScreen.class);
+                        enter.putExtra("Category", "sports_questions.txt");
+                        startActivity(enter);
+                    }else if (Category ==7) {
+                        Intent enter = new Intent(SoloScreen.this, QuestionsScreen.class);
+                        enter.putExtra("Category", "popculture_questions.txt.txt");
+                        startActivity(enter);
+                    }
+                    // DO WHATEVER YOU WANT.
+                }
+
+
+            }
+        };
+        registerReceiver(categoryReceiver, new IntentFilter("restart"));
+
     }
 
     @Override
@@ -61,6 +134,8 @@ public class SoloScreen extends AppCompatActivity {
                 Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
                 intent.putExtra("Category", "entertainment_questions.txt");
                 startActivity(intent);
+
+                Category = 1;
             }
 
         });
@@ -74,6 +149,9 @@ public class SoloScreen extends AppCompatActivity {
                 Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
                 intent.putExtra("Category", "game_questions.txt");
                 startActivity(intent);
+
+                Category = 2;
+
             }
 
         });
@@ -87,6 +165,8 @@ public class SoloScreen extends AppCompatActivity {
                 Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
                 intent.putExtra("Category", "history_questions.txt");
                 startActivity(intent);
+
+                Category = 3;
             }
 
         });
@@ -100,6 +180,8 @@ public class SoloScreen extends AppCompatActivity {
                 Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
                 intent.putExtra("Category", "music_questions.txt");
                 startActivity(intent);
+
+                Category = 4;
             }
 
         });
@@ -113,6 +195,8 @@ public class SoloScreen extends AppCompatActivity {
                 Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
                 intent.putExtra("Category", "science_questions.txt");
                 startActivity(intent);
+
+                Category = 5;
             }
 
         });
@@ -126,6 +210,8 @@ public class SoloScreen extends AppCompatActivity {
                 Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
                 intent.putExtra("Category", "sports_questions.txt");
                 startActivity(intent);
+
+                Category = 6;
             }
 
         });
@@ -139,6 +225,8 @@ public class SoloScreen extends AppCompatActivity {
                 Intent intent = new Intent(SoloScreen.this, QuestionsScreen.class);
                 intent.putExtra("Category", "popculture_questions.txt");
                 startActivity(intent);
+
+                Category = 7;
             }
 
         });

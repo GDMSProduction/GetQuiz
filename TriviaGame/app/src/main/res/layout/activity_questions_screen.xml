@@ -12,8 +12,8 @@
 
 
     <ImageView
-        android:layout_width="393dp"
-        android:layout_height="600dp"
+        android:layout_width="1593dp"
+        android:layout_height="1000dp"
         android:textAlignment="center"
         android:background="@drawable/background1"
         android:id="@+id/background"
@@ -23,8 +23,8 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
-        android:layout_width="400dp"
-        android:layout_height="80dp"
+        android:layout_width="700dp"
+        android:layout_height="100dp"
         android:textAlignment="center"
         android:background="@color/BlueGray"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -82,10 +82,11 @@
 
     <Button
         android:id="@+id/Answer1BTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="218dp"
+        android:layout_height="86dp"
+        android:background="@color/Gray"
         android:text="Answer 1"
-        android:background="@drawable/menubutton"
+        android:textSize="14sp"
         android:textColor="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -96,8 +97,8 @@
 
     <Button
         android:id="@+id/Answer2BTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="218dp"
+        android:layout_height="86dp"
         android:text="Answer 2"
         android:background="@drawable/menubutton"
         android:textColor="@color/White"
@@ -110,8 +111,8 @@
 
     <Button
         android:id="@+id/Answer3BTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="218dp"
+        android:layout_height="86dp"
         android:text="Answer 3"
         android:background="@drawable/menubutton"
         android:textColor="@color/White"
@@ -124,8 +125,8 @@
 
     <Button
         android:id="@+id/Answer4BTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="218dp"
+        android:layout_height="86dp"
         android:text="Answer 4"
         android:background="@drawable/menubutton"
         android:textColor="@color/White"
@@ -152,9 +153,10 @@
 
     <TextView
         android:id="@+id/TimerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="218dp"
+        android:layout_height="86dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="@color/Black"
         android:textSize="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
