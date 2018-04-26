@@ -44,16 +44,7 @@ public class GameOverPopUp extends AppCompatActivity {
 
 
     };
-    @Override
-    protected void onPause() {
-        super.onPause();
-       QuestionsScreen.backgroundMusic.pause();
-    }
-    @Override
-    protected  void onResume(){
-        super.onResume();
-        QuestionsScreen.backgroundMusic.start();
-    }
+
 
     public void configureMainMenu() {
         Button mainMenu = (Button) findViewById(R.id.GoMain);
@@ -87,7 +78,12 @@ public class GameOverPopUp extends AppCompatActivity {
             public void onClick(View view) {
                 QuestionsScreen.backgroundMusic.release();
                 MainMenu.backgroundM.start();
-                finish();
+
+                Intent solo = new Intent("finish_solo_activity");
+                sendBroadcast(solo);
+
+                Intent gotoSolo = new Intent(GameOverPopUp.this, SoloScreen.class);
+                startActivity(gotoSolo);
             }
 
         });

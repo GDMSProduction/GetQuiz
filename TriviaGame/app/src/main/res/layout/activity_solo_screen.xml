@@ -7,20 +7,6 @@
     tools:context="fullsailclass.triviagame.SoloScreen"
     android:background="@drawable/background1">
 
-    <Button
-        android:id="@+id/Science"
-        android:layout_width="218dp"
-        android:layout_height="86dp"
-        android:text="Science"
-        android:textSize="24sp"
-        android:background="@drawable/menubutton"
-        android:textColor="@color/White"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.747" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="279dp"
@@ -36,96 +22,12 @@
         app:layout_constraintVertical_bias="0.038" />
 
     <Button
-        android:id="@+id/Sports"
-        android:layout_width="218dp"
-        android:layout_height="86dp"
-        android:text="Sports"
-        android:textSize="24sp"
-        android:background="@drawable/menubutton"
-        android:textColor="@color/White"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.87" />
-
-    <Button
-        android:id="@+id/Popculture"
-        android:layout_width="218dp"
-        android:layout_height="86dp"
-        android:text="Pop Culture"
-        android:textSize="24sp"
-        android:background="@drawable/menubutton"
-        android:textColor="@color/White"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.993" />
-
-    <Button
-        android:id="@+id/History"
-        android:layout_width="218dp"
-        android:layout_height="86dp"
-        android:text="History"
-        android:textSize="24sp"
-        android:background="@drawable/menubutton"
-        android:textColor="@color/White"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
-
-    <Button
-        android:id="@+id/Entertainment"
-        android:layout_width="218dp"
-        android:layout_height="86dp"
-        android:text="Entertainment"
-        android:textSize="24sp"
-        android:background="@drawable/menubutton"
-        android:textColor="@color/White"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.224" />
-
-    <Button
-        android:id="@+id/Games"
-        android:layout_width="218dp"
-        android:layout_height="86dp"
-        android:text="Video Game"
-        android:textSize="24sp"
-        android:background="@drawable/menubutton"
-        android:textColor="@color/White"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.354" />
-
-    <Button
-        android:id="@+id/Music"
-        android:layout_width="218dp"
-        android:layout_height="86dp"
-        android:text="Music"
-        android:textSize="24sp"
-        android:background="@drawable/menubutton"
-        android:textColor="@color/White"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.622" />
-
-    <Button
         android:id="@+id/Back"
         android:layout_width="88dp"
         android:layout_height="48dp"
-        android:text="Back"
-
         android:background="@drawable/menubutton"
+
+        android:text="Back"
         android:textColor="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.976"
@@ -133,6 +35,131 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.006" />
+
+    <ScrollView
+        android:layout_width="590dp"
+        android:layout_height="680dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.979">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/Entertainment"
+                android:layout_width="300dp"
+                android:layout_height="86dp"
+                android:background="@drawable/menubutton"
+                android:text="Entertainment"
+                android:layout_gravity="center"
+                android:textColor="@color/White"
+                android:textSize="24sp"
+                 />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                />
+
+            <Button
+                android:id="@+id/Games"
+                android:layout_width="300dp"
+                android:layout_height="86dp"
+                android:background="@drawable/menubutton"
+                android:text="Video Game"
+                android:layout_gravity="center"
+                android:textColor="@color/White"
+                android:textSize="24sp"
+                 />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                />
+
+            <Button
+                android:id="@+id/Music"
+                android:layout_width="300dp"
+                android:layout_height="86dp"
+                android:background="@drawable/menubutton"
+                android:text="Music"
+                android:layout_gravity="center"
+                android:textColor="@color/White"
+                android:textSize="24sp"
+                 />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                />
+
+            <Button
+                android:id="@+id/History"
+                android:layout_width="300dp"
+                android:layout_height="86dp"
+                android:background="@drawable/menubutton"
+                android:text="History"
+                android:layout_gravity="center"
+                android:textColor="@color/White"
+                android:textSize="24sp"
+                 />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                />
+
+            <Button
+                android:id="@+id/Science"
+                android:layout_width="300dp"
+                android:layout_height="86dp"
+                android:background="@drawable/menubutton"
+                android:text="Science"
+                android:layout_gravity="center"
+                android:textColor="@color/White"
+                android:textSize="24sp"
+                />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                />
+
+            <Button
+                android:id="@+id/Sports"
+                android:layout_width="300dp"
+                android:layout_height="86dp"
+                android:background="@drawable/menubutton"
+                android:text="Sports"
+                android:layout_gravity="center"
+                android:textColor="@color/White"
+                android:textSize="24sp"
+                 />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                />
+
+            <Button
+                android:id="@+id/Popculture"
+                android:layout_width="300dp"
+                android:layout_height="86dp"
+                android:background="@drawable/menubutton"
+                android:text="Pop Culture"
+                android:layout_gravity="center"
+                android:textColor="@color/White"
+                android:textSize="24sp"
+                 />
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </android.support.constraint.ConstraintLayout>

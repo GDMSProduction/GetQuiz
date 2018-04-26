@@ -33,19 +33,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.00"
         app:layout_constraintHorizontal_bias="0.40"/>
+
     <TextView
         android:id="@+id/QuestionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Questions"
         android:gravity="center_horizontal"
+        android:text="Questions"
         android:textColor="@color/Black"
+        android:textSize="38sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.172"
-        />
+        app:layout_constraintVertical_bias="0.172" />
 
     <TextView
         android:id="@+id/Scoretxt"

@@ -91,7 +91,7 @@ public class SoloScreen extends AppCompatActivity {
                         startActivity(enter);
                     }else if (Category ==7) {
                         Intent enter = new Intent(SoloScreen.this, QuestionsScreen.class);
-                        enter.putExtra("Category", "popculture_questions.txt.txt");
+                        enter.putExtra("Category", "popculture_questions.txt");
                         startActivity(enter);
                     }
                     // DO WHATEVER YOU WANT.
