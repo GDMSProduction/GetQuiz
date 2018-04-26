@@ -10,9 +10,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 
 public class MainMenu extends AppCompatActivity {
     static MediaPlayer backgroundM;
+    //This for the settings
+    //public static SharedPreferences mPreferences;
+    //public static SharedPreferences.Editor mEditor;
+
+    static List<Integer> Settings = new ArrayList<Integer>();
+    //Settings
+    //0 = BGMusic Value
+    //1 = FX Value
+    //2 = Life Value
+    //3 = Time Value
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,16 +37,20 @@ public class MainMenu extends AppCompatActivity {
         configureMultiplayerButton();
         configureSoloButton();
         configureSettingsButton();
-
         setTitle("Main Menu");
-
+        ReadSettings();
 
         configureCreditsButton();
 
+       // mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //mEditor = mPreferences.edit();
+
+        //ReadSettings();
+       // checkSharedPReferences();
         backgroundM = MediaPlayer.create(MainMenu.this, R.raw.backgroundmusic);
         backgroundM.setLooping(true);
         backgroundM.start();
-        backgroundM.setVolume(0.20f , 0.20f);
+        backgroundM.setVolume(0.20f, 0.20f);
 
 
         Intent intent = new Intent("finish_GameOver");
@@ -52,17 +73,18 @@ public class MainMenu extends AppCompatActivity {
         registerReceiver(broadcastReceiver, new IntentFilter("finish_MainMenu"));
 
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         backgroundM.pause();
     }
+
     @Override
-    protected  void onResume(){
+    protected void onResume() {
         super.onResume();
         backgroundM.start();
     }
-
 
 
     public void configureSoloButton() {
@@ -76,7 +98,7 @@ public class MainMenu extends AppCompatActivity {
         });
     }
 
-    public void configureMultiplayerButton(){
+    public void configureMultiplayerButton() {
         Button multi = (Button) findViewById(R.id.Multplayer);
         multi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +108,7 @@ public class MainMenu extends AppCompatActivity {
         });
     }
 
-    public void configureSettingsButton(){
+    public void configureSettingsButton() {
         Button settings = (Button) findViewById(R.id.Settings);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +118,7 @@ public class MainMenu extends AppCompatActivity {
         });
     }
 
-    public void configureCreditsButton(){
+    public void configureCreditsButton() {
         Button cred = (Button) findViewById(R.id.Credits);
         cred.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +128,33 @@ public class MainMenu extends AppCompatActivity {
         });
     }
 
+    /*
+    private void checkSharedPReferences(){
+        Integer BGSound = mPreferences.getInt("BackgroundSoundPref",100);
+        Integer FXSound = mPreferences.getInt("FXSoundPref",100);
+        Integer LifeTotal = mPreferences.getInt("LifeTotalPref",3);
+        Integer TotalTime = mPreferences.getInt("TotalTimePref",15);
+    }
+    */
+
+    //Settings
+    public void ReadSettings(){
+
+        Scanner s = null;
+        String temp;
+        try {
+            s = new Scanner(new BufferedReader(new InputStreamReader(getAssets().open("settings.txt"), "UTF-8")));
+
+            while (s.hasNextLine()) {
+                temp = s.nextLine();
+                Settings.add(Integer.parseInt(temp));
+            }
+            s.close();
+        } catch (Exception e) {
+            System.out.println("could not find file");
+        }
 
 
+    }
 }
+

@@ -3,15 +3,13 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="Red">#D50000</color>
-    <color name="Green">#2E7D32</color>
     <color name="Black">#000000</color>
     <color name="Gray">#E0E0E0</color>
-    <color name="Aqua">#00CCCC</color>
-    <color name="DarkAqua">#009999</color>
     <color name="BlueGray">#37474F</color>
     <color name="DarkBlueGray">#263238</color>
     <color name="White">#FFFFFF</color>
+    <color name="Red">#ff0000</color>
+    <color name="Green">#00ff00</color>
 
 
 

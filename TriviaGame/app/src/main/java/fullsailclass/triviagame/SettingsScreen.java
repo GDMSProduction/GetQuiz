@@ -1,25 +1,40 @@
 package fullsailclass.triviagame;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class SettingsScreen extends AppCompatActivity {
-   static int progressBackMusic=100;
+   int progressBackMusic = MainMenu.Settings.get(0);
     SeekBar backMusic;
     TextView backmusicNum;
 
-    static int progressSoundEffect=100;
+
+    int progressSoundEffect= MainMenu.Settings.get(1);
     SeekBar soundEffect;
     TextView SoundEffectNum;
+
+    int life = MainMenu.Settings.get(2);
+    EditText LifeNums;
+
+    int time = MainMenu.Settings.get(3);
+    EditText TimeNums;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_screen);
+        LifeNums= (EditText) findViewById(R.id.LifeNum);
+        TimeNums= (EditText) findViewById(R.id.TimeNum);
+
+        LifeNums.setText(Integer.toString(life));
+        TimeNums.setText(Integer.toString(time));
+
 
         configureSettingBackButton();
         configureCreditsButton();
@@ -103,10 +118,29 @@ public class SettingsScreen extends AppCompatActivity {
 
     public void configureSettingBackButton() {
         Button settingsBack = (Button) findViewById(R.id.SettingsBackBTN);
+        LifeNums= (EditText) findViewById(R.id.LifeNum);
+        TimeNums= (EditText) findViewById(R.id.TimeNum);
+        backMusic= (SeekBar) findViewById(R.id.BackMusicSeekbar);
+        soundEffect= (SeekBar) findViewById(R.id.SoundEffectsSeekbar);
         settingsBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
+                MainMenu.mEditor.putInt("BackgroundSoundPref", progressBackMusic);
+                MainMenu.mEditor.commit();
+                MainMenu.mEditor.putInt("FXSoundPref", progressSoundEffect);
+                MainMenu.mEditor.commit();
+                MainMenu.mEditor.putInt("LifeTotalPref", life);
+                MainMenu.mEditor.commit();
+                MainMenu.mEditor.putInt("TotalTimePref", time);
+                MainMenu.mEditor.commit();
+                */
 
+                MainMenu.Settings.set(0, backMusic.getProgress());
+                MainMenu.Settings.set(1, soundEffect.getProgress());
+                MainMenu.Settings.set(2,Integer.parseInt(LifeNums.getText().toString()));
+                MainMenu.Settings.set(3, Integer.parseInt(TimeNums.getText().toString()));
+                MainMenu.backgroundM.setVolume((float)MainMenu.Settings.get(0)*0.20f, (float)MainMenu.Settings.get(0)*0.20f);
                 finish();
 
             }

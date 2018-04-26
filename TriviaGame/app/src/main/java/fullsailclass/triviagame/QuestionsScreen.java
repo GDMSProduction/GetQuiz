@@ -33,7 +33,7 @@ public class QuestionsScreen extends AppCompatActivity {
     static MediaPlayer backgroundMusic;
     CountDownTimer waitTimer = null;
     int Score = 0;
-    int Life = 3;
+    int Life = MainMenu.Settings.get(2);
     int globalrand = 0;
     long time = 0;
     Integer curQuestion = 0;
@@ -46,7 +46,7 @@ public class QuestionsScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions_screen);
 
-        Life = 3;
+        Life = MainMenu.Settings.get(2);
         category = getIntent().getExtras().getString("Category");
         OpenFile(category);
         setTitle("Questions");
@@ -354,7 +354,7 @@ public class QuestionsScreen extends AppCompatActivity {
         configureAnswer2btn(rand);
         configureAnswer3btn(rand);
         configureAnswer4btn(rand);
-        questiontxt.setTextSize(28);
+        questiontxt.setTextSize(48);
         questiontxt.setText(question);
         score.setText("Score: " + Score);
         life.setText("Life: " + Life);
@@ -376,7 +376,7 @@ public class QuestionsScreen extends AppCompatActivity {
 
     //timer
     public void configureTimer() {
-        waitTimer = new CountDownTimer(16000, 1000) {
+        waitTimer = new CountDownTimer(MainMenu.Settings.get(3)*1000, 1000) {
             TextView timer = (TextView) findViewById(R.id.TimerText);
 
             public void onTick(long millisUntilFinished) {
@@ -444,6 +444,7 @@ public class QuestionsScreen extends AppCompatActivity {
         play = MediaPlayer.create(this.getBaseContext(), R.raw.good);
         wrong = MediaPlayer.create(this.getBaseContext(), R.raw.wrong);
         gameover = MediaPlayer.create(this.getBaseContext(),R.raw.gameover);
+        SetFXVolume();
     }
 
     private void PopulatePlayedQuestions()
@@ -488,7 +489,15 @@ public class QuestionsScreen extends AppCompatActivity {
 
         backgroundMusic.setLooping(true);
         backgroundMusic.start();
-        backgroundMusic.setVolume(0.20f , 0.20f);
+        backgroundMusic.setVolume((float)MainMenu.Settings.get(0)*0.20f, (float)MainMenu.Settings.get(0)*0.20f);
+    }
+
+    private void SetFXVolume()
+    {
+        play.setVolume((float)MainMenu.Settings.get(1)*0.01f, (float)MainMenu.Settings.get(1)*0.01f);
+        timeover.setVolume((float)MainMenu.Settings.get(1)*0.01f, (float)MainMenu.Settings.get(1)*0.01f);
+        gameover.setVolume((float)MainMenu.Settings.get(1)*0.01f, (float)MainMenu.Settings.get(1)*0.01f);
+        wrong.setVolume((float)MainMenu.Settings.get(1)*0.01f, (float)MainMenu.Settings.get(1)*0.01f);
     }
 
 }
