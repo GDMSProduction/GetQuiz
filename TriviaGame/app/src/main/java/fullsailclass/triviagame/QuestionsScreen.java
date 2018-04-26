@@ -69,6 +69,7 @@ public class QuestionsScreen extends AppCompatActivity {
             public void onReceive(Context arg0, Intent intent) {
                 String action = intent.getAction();
                 if (action.equals("finish_Questions")) {
+                    waitTimer.cancel();
                     finish();
                     // DO WHATEVER YOU WANT.
                 }
@@ -354,7 +355,7 @@ public class QuestionsScreen extends AppCompatActivity {
         configureAnswer2btn(rand);
         configureAnswer3btn(rand);
         configureAnswer4btn(rand);
-        questiontxt.setTextSize(48);
+        questiontxt.setTextSize(38);
         questiontxt.setText(question);
         score.setText("Score: " + Score);
         life.setText("Life: " + Life);
@@ -459,10 +460,12 @@ public class QuestionsScreen extends AppCompatActivity {
         ImageView background =(ImageView) findViewById(R.id.background);
         if(category.equals("entertainment_questions.txt"))
         {
+            background.setImageResource(R.drawable.entertain1);
             backgroundMusic = MediaPlayer.create(QuestionsScreen.this, R.raw.entertainmentcategory);
         }
         else if(category.equals("game_questions.txt"))
         {
+            background.setImageResource(R.drawable.videogames1);
             backgroundMusic = MediaPlayer.create(QuestionsScreen.this, R.raw.gamescategory);
         }
         else if(category.equals("history_questions.txt"))
@@ -472,18 +475,22 @@ public class QuestionsScreen extends AppCompatActivity {
         }
         else if(category.equals("music_questions.txt"))
         {
+            background.setImageResource(R.drawable.music3);
             backgroundMusic = MediaPlayer.create(QuestionsScreen.this, R.raw.musiccategory);
         }
         else if(category.equals("science_questions.txt"))
         {
+            background.setImageResource(R.drawable.science2);
             backgroundMusic = MediaPlayer.create(QuestionsScreen.this, R.raw.sciencecategory);
         }
         else if(category.equals("sports_questions.txt"))
         {
+            background.setImageResource(R.drawable.sports2);
             backgroundMusic = MediaPlayer.create(QuestionsScreen.this, R.raw.sportscategory);
         }
         else if(category.equals("popculture_questions.txt"))
         {
+            background.setImageResource(R.drawable.popculture1);
             backgroundMusic = MediaPlayer.create(QuestionsScreen.this, R.raw.popculturecategory);
         }
 

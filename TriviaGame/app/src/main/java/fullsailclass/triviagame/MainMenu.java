@@ -59,6 +59,9 @@ public class MainMenu extends AppCompatActivity {
         Intent splash = new Intent("finish_Splash");
         sendBroadcast(splash);
 
+        Intent questions = new Intent("finish_Questions");
+        sendBroadcast(questions);
+
         BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
 
             @Override

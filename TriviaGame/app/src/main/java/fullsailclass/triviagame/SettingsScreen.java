@@ -140,7 +140,7 @@ public class SettingsScreen extends AppCompatActivity {
                 MainMenu.Settings.set(1, soundEffect.getProgress());
                 MainMenu.Settings.set(2,Integer.parseInt(LifeNums.getText().toString()));
                 MainMenu.Settings.set(3, Integer.parseInt(TimeNums.getText().toString()));
-                MainMenu.backgroundM.setVolume((float)MainMenu.Settings.get(0)*0.20f, (float)MainMenu.Settings.get(0)*0.20f);
+                MainMenu.backgroundM.setVolume((float)MainMenu.Settings.get(0)*0.01f, (float)MainMenu.Settings.get(0)*0.01f);
                 finish();
 
             }
