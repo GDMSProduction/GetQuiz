@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1015112463873",
+    "firebase_url": "https://triviaself.firebaseio.com",
+    "project_id": "triviaself",
+    "storage_bucket": "triviaself.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015112463873:android:aa9514b7e70691d8",
+        "android_client_info": {
+          "package_name": "fullsailclass.triviagame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015112463873-nlavbkjtua2b68ghl0degbt8rt0tuunh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fullsailclass.triviagame",
+            "certificate_hash": "a5c21b80effd5bc89e1cccebd32fd0894d927536"
+          }
+        },
+        {
+          "client_id": "1015112463873-1dak1qamv6gfhf3rp2q3l66m45fjrbvi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPMJuK3U9Gt2aObEfUoV1e4NOy_FBpTGs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015112463873-1dak1qamv6gfhf3rp2q3l66m45fjrbvi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
