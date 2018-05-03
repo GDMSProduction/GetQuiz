@@ -1,5 +1,6 @@
 package fullsailclass.triviagame;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,6 +18,7 @@ public class MultiplayerScreen extends AppCompatActivity {
         setContentView(R.layout.activity_multiplayer_screen);
 
         configureBackButton();
+        configureFindMatchButton();
         setTitle("Multiplayer Menu");
     }
     @Override
@@ -37,6 +39,17 @@ public class MultiplayerScreen extends AppCompatActivity {
                 finish();
             }
 
+        });
+    }
+    public void configureFindMatchButton()
+    {
+        Button findMatch = (Button) findViewById(R.id.multiQuickmatchBtn);
+        findMatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MultiplayerScreen.this, Multiplayer.class);
+                startActivity(intent);
+            }
         });
     }
 }

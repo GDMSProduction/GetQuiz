@@ -39,8 +39,6 @@ public class QuestionsScreen extends AppCompatActivity {
     Integer curQuestion = 0;
     String category;
     String question, answer1, answer2, answer3, answer4;
-
-    int Category= 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
