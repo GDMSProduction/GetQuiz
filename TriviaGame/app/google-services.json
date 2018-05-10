@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "965261088538-6cevojm3bkru1s6669i5b5e5bqpcel5q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fullsailclass.triviagame",
+            "certificate_hash": "48473aa45614fb3acb92c4c332d6be4e2adb1465"
+          }
+        },
+        {
           "client_id": "965261088538-32vndll1v5u7ehavbvgfkgtps0m2q6cl.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

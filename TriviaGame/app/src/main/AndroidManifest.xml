@@ -3,7 +3,8 @@
     package="fullsailclass.triviagame">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/triviaself"
@@ -11,7 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,11 +30,13 @@
         <activity android:name=".GamesScreen" />
         <activity android:name=".EntertainmentScreen" />
         <activity android:name=".SportsScreen" />
-        <activity android:name=".Multiplayer"/>
+        <activity android:name=".Multiplayer" />
         <activity
             android:name=".GameOverPopUp"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".MainMenu"></activity>
+        <activity android:name=".MainMenu" />
+        <activity android:name=".LoginScreen" />
+        <activity android:name=".CreateAccount"></activity>
     </application>
 
 </manifest>

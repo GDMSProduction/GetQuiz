@@ -37,6 +37,7 @@ public class MainMenu extends AppCompatActivity {
         configureMultiplayerButton();
         configureSoloButton();
         configureSettingsButton();
+        configureLoginBTN();
         setTitle("Main Menu");
         ReadSettings();
 
@@ -128,6 +129,17 @@ public class MainMenu extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(MainMenu.this, CreditsScreen.class));
             }
+        });
+    }
+
+    public void configureLoginBTN() {
+        Button solo = (Button) findViewById(R.id.Login);
+        solo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainMenu.this, LoginScreen.class));
+            }
+
         });
     }
 
