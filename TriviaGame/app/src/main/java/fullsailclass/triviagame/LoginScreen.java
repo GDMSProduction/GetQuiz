@@ -27,6 +27,9 @@ public class LoginScreen extends AppCompatActivity {
     private EditText mEmailField;
     private EditText mPasswordField;
     private Button btnSignIn, btnSignOut;
+    private EditText mCreateEmailField;
+    private EditText mCreatePasswordField;
+    private EditText mRePasswordField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +40,15 @@ public class LoginScreen extends AppCompatActivity {
         mPasswordField = findViewById(R.id.Password_text);
         btnSignIn = findViewById(R.id.Email_signin_BTN);
         btnSignOut = findViewById(R.id.Email_signout_BTN);
+        mCreateEmailField = findViewById(R.id.CreateEmail_text);
+        mCreatePasswordField = findViewById(R.id.CreatePassword_text);
+        mRePasswordField = findViewById(R.id.Re_Password_text);
 
-        setTitle("Login");
-        configureCreateAccount();
+        setTitle("Login/SignUp");
+
         configureLoginBackButton();
+        configureCreateBTN();
+
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -141,6 +149,53 @@ public class LoginScreen extends AppCompatActivity {
 
     }
 
+
+
+
+    public void createAccount(String email, String password){
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            toastMessage("Account successfully created");
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            toastMessage("Authentication failed");
+
+                        }
+
+                        // ...
+                    }
+                });
+
+
+    }
+
+    public void configureCreateBTN() {
+        Button multi = (Button) findViewById(R.id.CreateBTN);
+        multi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String stringEmail = mCreateEmailField.getText().toString();
+                String stringPassword = mCreatePasswordField.getText().toString();
+                String stringRePassword = mRePasswordField.getText().toString();
+
+                if(stringPassword.equals(stringRePassword)){
+                    createAccount(stringEmail,stringPassword);
+                }else{
+                    toastMessage("Passwords didn't match");
+                }
+
+            }
+        });
+    }
+
     //add a toast to show when successfully signed in
 
     /**
@@ -152,15 +207,6 @@ public class LoginScreen extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    public void configureCreateAccount() {
-        Button solo = (Button) findViewById(R.id.CreateAccountBTN);
-        solo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LoginScreen.this, CreateAccount.class));
-            }
 
-        });
-    }
 }
 

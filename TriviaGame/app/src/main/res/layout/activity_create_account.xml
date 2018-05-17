@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateAccount">
+    tools:context=".CreateAccount"
+    android:background="@drawable/background1">
 
     <EditText
         android:id="@+id/CreateEmail_text"
@@ -38,7 +39,10 @@
         android:id="@+id/CreateBTN"
         android:layout_width="300dp"
         android:layout_height="85dp"
+        android:background="@drawable/menubutton"
         android:text="Create Account"
+        android:textColor="@color/White"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -50,7 +54,9 @@
         android:id="@+id/CreateBackBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/menubutton"
         android:text="Back"
+        android:textColor="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.936"
         app:layout_constraintLeft_toLeftOf="parent"

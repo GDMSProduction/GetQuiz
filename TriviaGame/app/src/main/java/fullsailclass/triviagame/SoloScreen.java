@@ -38,6 +38,9 @@ public class SoloScreen extends AppCompatActivity {
         Intent GameOver = new Intent("finish_GameOver");
         sendBroadcast(GameOver);
 
+        Intent Victory = new Intent("finish_Victory");
+        sendBroadcast(Victory);
+
         Intent Questions = new Intent("finish_Questions");
         sendBroadcast(Questions);
 
