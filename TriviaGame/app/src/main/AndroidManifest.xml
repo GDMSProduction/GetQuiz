@@ -31,6 +31,8 @@
         <activity android:name=".EntertainmentScreen" />
         <activity android:name=".SportsScreen" />
         <activity android:name=".Multiplayer" />
+        <activity android:name=".TriviaselfOptions"/>
+        <activity android:name=".TriviaSelfAddQ"/>
         <activity
             android:name=".GameOverPopUp"
             android:theme="@style/AppTheme.CustomTheme" />

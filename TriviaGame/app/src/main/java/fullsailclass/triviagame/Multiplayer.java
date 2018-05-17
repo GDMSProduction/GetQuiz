@@ -296,7 +296,7 @@ if(playerCheck == true) {
     public void configureAnswer4btn(final int _rand) {
         final Button Answer4 = (Button) findViewById(R.id.Answer4BTN);
         //Answer4.setText(answer4);
-       // myRef.child(KeyNumber).child("A4").setValue(answer4);
+       //myRef.child(KeyNumber).child("A4").setValue(answer4);
         Answer4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
@@ -434,15 +434,11 @@ if(playerCheck == true) {
         myRef.child(KeyNumber).child("A3").setValue(answer3);
         myRef.child(KeyNumber).child("A4").setValue(answer4);
 
+        //curQuestion = curQuestion + 1;
+        myRef.child("CurQuestion").child("Value").setValue(String.valueOf(curQuestion));
 
-        myRef.child("CurQuestion").child("Value").setValue(String.valueOf(curQuestion++));
+/*
 
-
-
-
-
-
-        /*
         score.setText("Score: " + Score);
         life.setText("Life: " + Life);
         configureTimer();
@@ -452,25 +448,9 @@ if(playerCheck == true) {
             gameover.start();
             changeActivity();
             finish();
-        */
+            */
     }
 
-    private void StartGame()
-    {
-        int rand = PlayedQuestions.get(curQuestion);
-        Questions = list.get(rand).getQuestion();
-        answer1 = list.get(rand).getAnswer1();
-        answer2 = list.get(rand).getAnswer2();
-        answer3 = list.get(rand).getAnswer3();
-        answer4 = list.get(rand).getAnswer4();
-
-        configureQuestionsBackButton();
-        configureAnswer1btn(rand);
-        configureAnswer2btn(rand);
-        configureAnswer3btn(rand);
-        configureAnswer4btn(rand);
-
-    }
     private void PopulatePlayedQuestions()
     {
         for (int i = 0; i < list.size(); ++i){
