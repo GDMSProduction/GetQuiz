@@ -58,6 +58,9 @@ public class QuestionsScreen extends AppCompatActivity {
         Intent GameOver = new Intent("finish_GameOver");
         sendBroadcast(GameOver);
 
+        Intent Victory = new Intent("finish_Victory");
+        sendBroadcast(Victory);
+
 
 
         //Receiver
@@ -359,17 +362,29 @@ public class QuestionsScreen extends AppCompatActivity {
         life.setText("Life: " + Life);
         configureTimer();
         curQuestion++;
-        if (Life <= 0 || curQuestion >= 20) {
+        if (Life <= 0) {
             waitTimer.cancel();
             gameover.start();
-            changeActivity();
+            changeToGameOver();
+            finish();
+        }
+        if(curQuestion >= 20) {
+            waitTimer.cancel();
+            //gameover.start();
+            changeToVictory();
             finish();
         }
     }
 
-    public void changeActivity()
+    public void changeToGameOver()
     {
         Intent intent = new Intent(QuestionsScreen.this, GameOverPopUp.class);
+        startActivity(intent);
+    }
+
+    public void changeToVictory()
+    {
+        Intent intent = new Intent(QuestionsScreen.this, VictoryScreen.class);
         startActivity(intent);
     }
 

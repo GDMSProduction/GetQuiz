@@ -24,12 +24,6 @@
         <activity android:name=".SettingsScreen" />
         <activity android:name=".QuestionsScreen" />
         <activity android:name=".CreditsScreen" />
-        <activity android:name=".HistoryScreen" />
-        <activity android:name=".ScienceScreen" />
-        <activity android:name=".MusicScreen" />
-        <activity android:name=".GamesScreen" />
-        <activity android:name=".EntertainmentScreen" />
-        <activity android:name=".SportsScreen" />
         <activity android:name=".Multiplayer" />
         <activity android:name=".TriviaselfOptions"/>
         <activity android:name=".TriviaSelfAddQ"/>
@@ -38,7 +32,9 @@
             android:theme="@style/AppTheme.CustomTheme" />
         <activity android:name=".MainMenu" />
         <activity android:name=".LoginScreen" />
-        <activity android:name=".CreateAccount"></activity>
+        <activity android:name=".CreateAccount" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".VictoryScreen"></activity>
     </application>
 
 </manifest>

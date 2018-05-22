@@ -26,7 +26,6 @@
         android:layout_width="88dp"
         android:layout_height="48dp"
         android:background="@drawable/menubutton"
-
         android:text="Back"
         android:textColor="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"

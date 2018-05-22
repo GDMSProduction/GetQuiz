@@ -58,6 +58,9 @@ public class MainMenu extends AppCompatActivity {
         Intent intent = new Intent("finish_GameOver");
         sendBroadcast(intent);
 
+        Intent Victory = new Intent("finish_Victory");
+        sendBroadcast(Victory);
+
         Intent splash = new Intent("finish_Splash");
         sendBroadcast(splash);
 
