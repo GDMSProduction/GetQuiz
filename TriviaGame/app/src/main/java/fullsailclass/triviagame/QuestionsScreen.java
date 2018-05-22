@@ -498,7 +498,7 @@ public class QuestionsScreen extends AppCompatActivity {
         }
         else if(category.equals("sports_questions.txt"))
         {
-            background.setImageResource(R.drawable.sports2);
+            background.setImageResource(R.drawable.sportsbg);
             backgroundMusic = MediaPlayer.create(QuestionsScreen.this, R.raw.sportscategory);
         }
         else if(category.equals("popculture_questions.txt"))

@@ -36,6 +36,7 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
         configureMultiplayerButton();
         configureSoloButton();
+        configureTriviaSelfButton();
         configureSettingsButton();
         configureLoginBTN();
         setTitle("Main Menu");
@@ -111,6 +112,15 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainMenu.this, MultiplayerScreen.class));
+            }
+        });
+    }
+    public void configureTriviaSelfButton() {
+        Button settings = (Button) findViewById(R.id.TriviaSelf);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainMenu.this, TriviaselfOptions.class));
             }
         });
     }

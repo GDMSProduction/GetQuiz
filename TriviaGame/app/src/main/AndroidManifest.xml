@@ -25,6 +25,8 @@
         <activity android:name=".QuestionsScreen" />
         <activity android:name=".CreditsScreen" />
         <activity android:name=".Multiplayer" />
+        <activity android:name=".TriviaselfOptions"/>
+        <activity android:name=".TriviaSelfAddQ"/>
         <activity
             android:name=".GameOverPopUp"
             android:theme="@style/AppTheme.CustomTheme" />
