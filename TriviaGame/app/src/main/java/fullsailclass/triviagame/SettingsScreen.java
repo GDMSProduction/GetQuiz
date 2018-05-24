@@ -10,12 +10,12 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class SettingsScreen extends AppCompatActivity {
-   int progressBackMusic = MainMenu.Settings.get(0);
+    int progressBackMusic = MainMenu.Settings.get(0);
     SeekBar backMusic;
     TextView backmusicNum;
 
 
-    int progressSoundEffect= MainMenu.Settings.get(1);
+    int progressSoundEffect = MainMenu.Settings.get(1);
     SeekBar soundEffect;
     TextView SoundEffectNum;
 
@@ -29,8 +29,8 @@ public class SettingsScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_screen);
-        LifeNums= (EditText) findViewById(R.id.LifeNum);
-        TimeNums= (EditText) findViewById(R.id.TimeNum);
+        LifeNums = (EditText) findViewById(R.id.LifeNum);
+        TimeNums = (EditText) findViewById(R.id.TimeNum);
 
         LifeNums.setText(Integer.toString(life));
         TimeNums.setText(Integer.toString(time));
@@ -44,32 +44,34 @@ public class SettingsScreen extends AppCompatActivity {
 
         setTitle("Settings");
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         MainMenu.backgroundM.pause();
     }
+
     @Override
-    protected  void onResume(){
+    protected void onResume() {
         super.onResume();
         MainMenu.backgroundM.start();
     }
 
     private void configureBackMusicSeekbar() {
-        backMusic= (SeekBar) findViewById(R.id.BackMusicSeekbar);
+        backMusic = (SeekBar) findViewById(R.id.BackMusicSeekbar);
         backMusic.setMax(100);
         backMusic.setProgress(progressBackMusic);
 
         backmusicNum = (TextView) findViewById(R.id.BackMusicNumText);
-        backmusicNum.setText(""+progressBackMusic);
+        backmusicNum.setText("" + progressBackMusic);
 
-        backMusic.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+        backMusic.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                progressBackMusic =i;
-                backmusicNum.setText(""+progressBackMusic);
+                progressBackMusic = i;
+                backmusicNum.setText("" + progressBackMusic);
             }
 
             @Override
@@ -85,21 +87,22 @@ public class SettingsScreen extends AppCompatActivity {
 
 
     }
+
     private void configureSoundEffectSeekbar() {
-        soundEffect= (SeekBar) findViewById(R.id.SoundEffectsSeekbar);
+        soundEffect = (SeekBar) findViewById(R.id.SoundEffectsSeekbar);
         soundEffect.setMax(100);
         soundEffect.setProgress(progressSoundEffect);
 
         SoundEffectNum = (TextView) findViewById(R.id.SoundEffectsNumText);
-        SoundEffectNum.setText(""+progressSoundEffect);
+        SoundEffectNum.setText("" + progressSoundEffect);
 
-        soundEffect.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+        soundEffect.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                progressSoundEffect =i;
-                SoundEffectNum.setText(""+progressSoundEffect);
+                progressSoundEffect = i;
+                SoundEffectNum.setText("" + progressSoundEffect);
             }
 
             @Override
@@ -118,29 +121,18 @@ public class SettingsScreen extends AppCompatActivity {
 
     public void configureSettingBackButton() {
         Button settingsBack = (Button) findViewById(R.id.SettingsBackBTN);
-        LifeNums= (EditText) findViewById(R.id.LifeNum);
-        TimeNums= (EditText) findViewById(R.id.TimeNum);
-        backMusic= (SeekBar) findViewById(R.id.BackMusicSeekbar);
-        soundEffect= (SeekBar) findViewById(R.id.SoundEffectsSeekbar);
+        LifeNums = (EditText) findViewById(R.id.LifeNum);
+        TimeNums = (EditText) findViewById(R.id.TimeNum);
+        backMusic = (SeekBar) findViewById(R.id.BackMusicSeekbar);
+        soundEffect = (SeekBar) findViewById(R.id.SoundEffectsSeekbar);
         settingsBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
-                MainMenu.mEditor.putInt("BackgroundSoundPref", progressBackMusic);
-                MainMenu.mEditor.commit();
-                MainMenu.mEditor.putInt("FXSoundPref", progressSoundEffect);
-                MainMenu.mEditor.commit();
-                MainMenu.mEditor.putInt("LifeTotalPref", life);
-                MainMenu.mEditor.commit();
-                MainMenu.mEditor.putInt("TotalTimePref", time);
-                MainMenu.mEditor.commit();
-                */
-
                 MainMenu.Settings.set(0, backMusic.getProgress());
                 MainMenu.Settings.set(1, soundEffect.getProgress());
-                MainMenu.Settings.set(2,Integer.parseInt(LifeNums.getText().toString()));
+                MainMenu.Settings.set(2, Integer.parseInt(LifeNums.getText().toString()));
                 MainMenu.Settings.set(3, Integer.parseInt(TimeNums.getText().toString()));
-                MainMenu.backgroundM.setVolume((float)MainMenu.Settings.get(0)*0.01f, (float)MainMenu.Settings.get(0)*0.01f);
+                MainMenu.backgroundM.setVolume((float) MainMenu.Settings.get(0) * 0.01f, (float) MainMenu.Settings.get(0) * 0.01f);
                 finish();
 
             }
@@ -148,7 +140,7 @@ public class SettingsScreen extends AppCompatActivity {
         });
     }
 
-    public void configureCreditsButton(){
+    public void configureCreditsButton() {
         Button cred = (Button) findViewById(R.id.CreditsBTN);
         cred.setOnClickListener(new View.OnClickListener() {
             @Override

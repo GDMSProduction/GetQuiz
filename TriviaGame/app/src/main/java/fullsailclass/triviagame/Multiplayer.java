@@ -1,7 +1,10 @@
 package fullsailclass.triviagame;
 
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -35,7 +38,11 @@ public class Multiplayer extends AppCompatActivity {
     private TextView Question;
     private Boolean playerCheck = true;
     private String Player; //0 = player 1/1 = player 2
+    private int Score, Life;
+    private long time;
     int curQuestion = 0;
+    int globalrand = 0;
+    CountDownTimer waitTimer = null;
     String Questions, answer1, answer2, answer3, answer4;
 
     @Override
@@ -52,6 +59,7 @@ public class Multiplayer extends AppCompatActivity {
         myRef.child("CurQuestion").child("Value").setValue("0");
         OpenFile("multiplayer_questions.txt");
         PopulatePlayedQuestions();
+        CountDownTimer waitTimer = null;
 
         NextQuestion(0);
         configureQuestionsBackButton();
@@ -61,43 +69,22 @@ public class Multiplayer extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-if(playerCheck == true) {
-    Player = dataSnapshot.child("Player").child("Value").getValue().toString();
-    if (Player.equals("0")) {
-        Question.setText(String.valueOf(dataSnapshot.child("Player").child("Value").getValue()));
-        myRef.child("Player").child("Value").setValue("1");
-        Player = dataSnapshot.child("Player").child("Value").getValue().toString();
-        playerCheck = false;
-    } else if (Player.equals("1")) {
-        Question.setText(String.valueOf(dataSnapshot.child("Player").child("Value").getValue()));
-        myRef.child("Player").child("Value").setValue("0");
-        Player = dataSnapshot.child("Player").child("Value").getValue().toString();
-        playerCheck = false;
-    }
-}
-/*)
-                curQuestion = (Integer.parseInt(String.valueOf(dataSnapshot.child("CurQuestion").child("Value").getValue())));
-
-                if(curQuestion < 0)
-                    curQuestion = 0;
-
-
-                configureAnswer1btn(curQuestion);
-                configureAnswer2btn(curQuestion);
-                configureAnswer3btn(curQuestion);
-                configureAnswer4btn(curQuestion);
-
-                */
-
-
-                Question.setText(String.valueOf(dataSnapshot.child(KeyNumber).child("Q").getValue()));
-                A1.setText(String.valueOf(dataSnapshot.child(KeyNumber).child("A1").getValue()));
-                A2.setText(String.valueOf(dataSnapshot.child(KeyNumber).child("A2").getValue()));
-                A3.setText(String.valueOf(dataSnapshot.child(KeyNumber).child("A3").getValue()));
-                A4.setText(String.valueOf(dataSnapshot.child(KeyNumber).child("A4").getValue()));
-                //System.out.println ( "it changed in data");
-
+                if (playerCheck == true) {
+                    Player = dataSnapshot.child("Player").child("Value").getValue().toString();
+                    if (Player.equals("0")) {
+                        Question.setText(String.valueOf(dataSnapshot.child("Player").child("Value").getValue()));
+                        myRef.child("Player").child("Value").setValue("1");
+                        Player = dataSnapshot.child("Player").child("Value").getValue().toString();
+                        playerCheck = false;
+                    } else if (Player.equals("1")) {
+                        Question.setText(String.valueOf(dataSnapshot.child("Player").child("Value").getValue()));
+                        myRef.child("Player").child("Value").setValue("0");
+                        Player = dataSnapshot.child("Player").child("Value").getValue().toString();
+                        playerCheck = false;
+                    }
+                }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -106,13 +93,15 @@ if(playerCheck == true) {
 
 
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         backgroundMusic.pause();
     }
+
     @Override
-    protected  void onResume() {
+    protected void onResume() {
         super.onResume();
         backgroundMusic.start();
     }
@@ -234,7 +223,7 @@ if(playerCheck == true) {
                         public void run() {
                             //wrong.start();
                             NextQuestion(2);
-                           ResetBTNColor();
+                            ResetBTNColor();
                         }
                     }, 1000);
                 } else {
@@ -247,7 +236,7 @@ if(playerCheck == true) {
                         }
                     }, 1000);
                 }
-               //timeover.release();
+                //timeover.release();
                 //SetupSound();
                 //waitTimer.cancel();
 
@@ -296,7 +285,7 @@ if(playerCheck == true) {
     public void configureAnswer4btn(final int _rand) {
         final Button Answer4 = (Button) findViewById(R.id.Answer4BTN);
         //Answer4.setText(answer4);
-       //myRef.child(KeyNumber).child("A4").setValue(answer4);
+        //myRef.child(KeyNumber).child("A4").setValue(answer4);
         Answer4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
@@ -331,6 +320,7 @@ if(playerCheck == true) {
 
         });
     }
+
     public void configureQuestionsBackButton() {
         Button back = (Button) findViewById(R.id.QuestionsBackBTN);
         back.setOnClickListener(new View.OnClickListener() {
@@ -344,12 +334,11 @@ if(playerCheck == true) {
         });
     }
 
-    public void BackgroundMusic()
-    {
+    public void BackgroundMusic() {
         backgroundMusic = MediaPlayer.create(Multiplayer.this, R.raw.multiplayer);
         backgroundMusic.setLooping(true);
         backgroundMusic.start();
-        backgroundMusic.setVolume((float)MainMenu.Settings.get(0)*0.20f, (float)MainMenu.Settings.get(0)*0.20f);
+        backgroundMusic.setVolume((float) MainMenu.Settings.get(0) * 0.20f, (float) MainMenu.Settings.get(0) * 0.20f);
     }
 
     public void OpenFile(String test) {
@@ -401,8 +390,7 @@ if(playerCheck == true) {
         TextView questiontxt = (TextView) findViewById(R.id.QuestionText);
         TextView life = (TextView) findViewById(R.id.Lifetxt);
         TextView score = (TextView) findViewById(R.id.Scoretxt);
-        /*
-        ResetBTNColor();
+
         switch (_switch) {
             case 1:
                 Score += time * 10;
@@ -413,8 +401,8 @@ if(playerCheck == true) {
             default:
                 break;
         }
-*/
         int rand = PlayedQuestions.get(curQuestion);
+        globalrand = rand;
         Questions = list.get(rand).getQuestion();
         answer1 = list.get(rand).getAnswer1();
         answer2 = list.get(rand).getAnswer2();
@@ -437,35 +425,83 @@ if(playerCheck == true) {
         //curQuestion = curQuestion + 1;
         myRef.child("CurQuestion").child("Value").setValue(String.valueOf(curQuestion));
 
-/*
-
         score.setText("Score: " + Score);
         life.setText("Life: " + Life);
         configureTimer();
 
         if (Life <= 0 || curQuestion >= 20) {
             waitTimer.cancel();
-            gameover.start();
-            changeActivity();
             finish();
-            */
+        }
     }
 
-    private void PopulatePlayedQuestions()
-    {
-        for (int i = 0; i < list.size(); ++i){
-            PlayedQuestions.add(i);
+        private void PopulatePlayedQuestions () {
+            for (int i = 0; i < list.size(); ++i) {
+                PlayedQuestions.add(i);
+            }
+            Collections.shuffle(PlayedQuestions);
         }
-        Collections.shuffle(PlayedQuestions, new Random(0));
-    }
-    private void ResetBTNColor() {
+        private void ResetBTNColor () {
+            Button Answerbtn1 = (Button) findViewById(R.id.Answer1BTN);
+            Button Answerbtn2 = (Button) findViewById(R.id.Answer2BTN);
+            Button Answerbtn3 = (Button) findViewById(R.id.Answer3BTN);
+            Button Answerbtn4 = (Button) findViewById(R.id.Answer4BTN);
+            Answerbtn1.setBackgroundColor(getResources().getColor(R.color.DarkBlueGray));
+            Answerbtn2.setBackgroundColor(getResources().getColor(R.color.DarkBlueGray));
+            Answerbtn3.setBackgroundColor(getResources().getColor(R.color.DarkBlueGray));
+            Answerbtn4.setBackgroundColor(getResources().getColor(R.color.DarkBlueGray));
+        }
+    private void ShowAnswer() {
         Button Answerbtn1 = (Button) findViewById(R.id.Answer1BTN);
         Button Answerbtn2 = (Button) findViewById(R.id.Answer2BTN);
         Button Answerbtn3 = (Button) findViewById(R.id.Answer3BTN);
         Button Answerbtn4 = (Button) findViewById(R.id.Answer4BTN);
-        Answerbtn1.setBackgroundColor(getResources().getColor(R.color.DarkBlueGray));
-        Answerbtn2.setBackgroundColor(getResources().getColor(R.color.DarkBlueGray));
-        Answerbtn3.setBackgroundColor(getResources().getColor(R.color.DarkBlueGray));
-        Answerbtn4.setBackgroundColor(getResources().getColor(R.color.DarkBlueGray));
+
+        if (list.get(globalrand).getIsAnswer1() == true)
+            Answerbtn1.setBackgroundColor(getResources().getColor(R.color.Green));
+
+        if (list.get(globalrand).getIsAnswer2() == true)
+            Answerbtn2.setBackgroundColor(getResources().getColor(R.color.Green));
+
+        if(list.get(globalrand).getIsAnswer3() == true)
+            Answerbtn3.setBackgroundColor(getResources().getColor(R.color.Green));
+
+        if(list.get(globalrand).getIsAnswer4() == true)
+            Answerbtn4.setBackgroundColor(getResources().getColor(R.color.Green));
     }
+
+    public void configureTimer () {
+        waitTimer = new CountDownTimer(MainMenu.Settings.get(3) * 1000, 1000) {
+            TextView timer = (TextView) findViewById(R.id.TimerText);
+
+            public void onTick(long millisUntilFinished) {
+                timer.setTextColor(Color.BLUE);
+
+                timer.setText("" + millisUntilFinished / 1000);
+                time = (long) (Integer.parseInt(String.valueOf(millisUntilFinished)) / 1000);
+
+                if (millisUntilFinished < 6000) {
+                    timer.setTextColor(Color.RED);
+                }
+                //if (millisUntilFinished < 6000 && millisUntilFinished > 5000)
+                    //timeover.start();
+
+
+            }
+
+            public void onFinish() {
+                //wrong.start();
+                ShowAnswer();
+                new Handler().postDelayed(new Runnable() {
+                    public void run() {
+                        waitTimer.cancel();
+                        NextQuestion(2);
+                    }
+                }, 2000);
+
+            }
+        }.start();
     }
+
+    }
+

@@ -112,6 +112,7 @@ public class QuestionsScreen extends AppCompatActivity {
         Answer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+                Answer1.setClickable(false);
                 if (list.get(_rand).getIsAnswer1() == false) {
                     Answer1.setBackgroundColor(getResources().getColor(R.color.Red));
                     ShowAnswer();
@@ -148,6 +149,7 @@ public class QuestionsScreen extends AppCompatActivity {
         Answer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+                Answer2.setClickable(false);
                 if (list.get(_rand).getIsAnswer2() == false) {
                     Answer2.setBackgroundColor(getResources().getColor(R.color.Red));
                     ShowAnswer();
@@ -184,6 +186,7 @@ public class QuestionsScreen extends AppCompatActivity {
         Answer3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+                Answer3.setClickable(false);
                 if (list.get(_rand).getIsAnswer3() == false) {
                     Answer3.setBackgroundColor(getResources().getColor(R.color.Red));
                     ShowAnswer();
@@ -219,7 +222,7 @@ public class QuestionsScreen extends AppCompatActivity {
         Answer4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-
+                Answer4.setClickable(false);
                 if (list.get(_rand).getIsAnswer4() == false) {
                     Answer4.setBackgroundColor(getResources().getColor(R.color.Red));
                     ShowAnswer();
@@ -329,6 +332,10 @@ public class QuestionsScreen extends AppCompatActivity {
         TextView questiontxt = (TextView) findViewById(R.id.QuestionText);
         TextView life = (TextView) findViewById(R.id.Lifetxt);
         TextView score = (TextView) findViewById(R.id.Scoretxt);
+        Button A1 = (Button) findViewById(R.id.Answer1BTN);
+        Button A2 = (Button) findViewById(R.id.Answer2BTN);
+        Button A3 = (Button) findViewById(R.id.Answer3BTN);
+        Button A4 = (Button) findViewById(R.id.Answer4BTN);
         ResetBTNColor();
         switch (_switch) {
             case 1:
@@ -358,8 +365,14 @@ public class QuestionsScreen extends AppCompatActivity {
         configureAnswer4btn(rand);
         questiontxt.setTextSize(38);
         questiontxt.setText(question);
+
         score.setText("Score: " + Score);
         life.setText("Life: " + Life);
+        A1.setClickable(true);
+        A2.setClickable(true);
+        A3.setClickable(true);
+        A4.setClickable(true);
+
         configureTimer();
         curQuestion++;
         if (Life <= 0) {
